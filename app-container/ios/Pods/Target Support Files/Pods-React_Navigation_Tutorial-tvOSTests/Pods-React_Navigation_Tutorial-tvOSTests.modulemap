@@ -1,0 +1,6 @@
+framework module Pods_React_Navigation_Tutorial_tvOSTests {
+  umbrella header "Pods-React_Navigation_Tutorial-tvOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

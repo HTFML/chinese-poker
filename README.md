@@ -8,7 +8,7 @@
   - [Setting up Development Environment](https://reactnative.dev/docs/environment-setup)
   
   ### Instructions
-  Feel free to correct me if I am wrong, Alex. Not sure how we feel about package managers, but npm and yarn are available.
+  Feel free to correct me if I am wrong, Alex. Not sure how we feel about package managers, but `npm` and `yarn` are available.
   - Clone the Master branch
   - Run `cd app-container` in the terminal to get to the application's directory
   - Run `npm install` in the terminal to make sure all dependancies are installed

@@ -9,7 +9,7 @@
   
   ### Instructions
   Feel free to correct me if I am wrong, Alex. Not sure how we feel about package managers, but `npm` and `yarn` are available.
-  - Clone the Master branch
+  - Clone the `master` branch
   - Run `cd app-container` in the terminal to get to the application's directory
   - Run `npm install` in the terminal to make sure all dependancies are installed
   - Run `yarn ios` to start and launch the Expo CLI on your browser and subsequently on the iOS simulator (if you don't have Expo CLI installed, this command should install Expo for you and then launch the application).

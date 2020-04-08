@@ -2,7 +2,7 @@
 
 &nbsp;
 
-# Getting Set Up
+## Getting Set Up
   ### Prerequisites
   If you don't want to run the simulator on Expo CLI, be sure to have XCode installed. In "Preferences > Components", you can download the specific iOS simulators you would like to run (I recommend the most recent one).
   - [Setting up Development Environment](https://reactnative.dev/docs/environment-setup)

@@ -2,7 +2,7 @@
 
 &nbsp;
 
-# Installation
+# Getting Set Up
   ### Prerequisites
   If you don't want to run the simulator on Expo CLI, be sure to have XCode installed. In "Preferences > Components", you can download the specific iOS simulators you would like to run (I recommend the most recent one).
   - [Setting up Development Environment](https://reactnative.dev/docs/environment-setup)
@@ -16,3 +16,6 @@
     - If you have Expo installed on your phone, you should be able to run the application on your phone through the Expo app using the QR code.
     - Later, I might write a seperate script to launch the application through XCode, instead of Expo, if for whatever reason someone prefers to not use Expo. As far as I know, they are essentially the same.
   - Changes will be reflected after you save on your text-editor and hitting `CMD + R` when on the simulator, initiating a refresh 
+  
+  ### Notes
+  Most of the work done will be in the `src` directory. Some files will be outside of that directory, mainly `App.js`, `index.js`, and other files that I plan on using as a modular component (like putting all the navigation routes in one file: `Navigation.js`).

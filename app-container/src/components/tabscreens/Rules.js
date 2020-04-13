@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-class DeliveryScreen extends React.Component {
+class Rules extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -11,4 +11,4 @@ class DeliveryScreen extends React.Component {
   }
 }
 
-export default DeliveryScreen;
+export default Rules;

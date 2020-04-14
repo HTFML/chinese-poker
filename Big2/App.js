@@ -1,10 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+<<<<<<< HEAD
 import HomeScreen from './src/screens/HomeScreen.js';
 import PlayScreen from './src/screens/PlayScreen.js';
 import Rules from './src/screens/Rules.js'
 import LoginScreen from './src/screens/Login.js'
+=======
+import HomeScreen from './src/components/tabscreens/HomeScreen.js';
+import PlayScreen from './src/components/tabscreens/PlayScreen';
+import Lobby from './src/components/tabscreens/Lobby';
+
+>>>>>>> Ali pull it
 
 const Stack = createStackNavigator();
 

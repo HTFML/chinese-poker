@@ -11,6 +11,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{ gestureEnabled: false }}
@@ -33,6 +34,7 @@ const App = () => {
         />
 
       </Stack.Navigator>
+
     </NavigationContainer>
     )
 }

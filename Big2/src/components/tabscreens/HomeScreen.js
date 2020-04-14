@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
-      <Text>Home!</Text>
+      <Text>This is the Home Page</Text>
     </View>
   )
 }

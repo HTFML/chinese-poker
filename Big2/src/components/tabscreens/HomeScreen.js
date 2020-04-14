@@ -1,11 +1,27 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
+
+  let handlePress = () => {
+    navigation.navigate('Play', {
+      title: 'This is the lobby',
+      date: 25
+    })
+  }
+
   return (
     <View style={styles.mainContainer}>
-      <Text>Home!</Text>
+      <TouchableOpacity>
+        <Text style={{fontSize: 23}} onPress={handlePress}>Home!</Text>
+      </TouchableOpacity>
+      <Text style={{fontSize: 40}}>Rules</Text>
     </View>
+      
+      // <Button 
+      //   title="Play Now!"
+      //   onPress={handlePress} 
+      // />
   )
 }
 
@@ -16,6 +32,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 })
-
 
 export default HomeScreen;

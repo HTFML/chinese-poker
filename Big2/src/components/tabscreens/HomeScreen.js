@@ -19,7 +19,7 @@ const HomeScreen = ({ navigation }) => {
       <Button 
         title="RULES"
         onPress={() => navigation.navigate('Rules')}
-      />     
+      /> 
     </View>
   )
 }

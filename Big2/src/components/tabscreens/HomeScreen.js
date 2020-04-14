@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 const HomeScreen = ({ navigation }) => {
 
   let handlePress = () => {
-    navigation.navigate('Play', {
+    navigation.navigate('Lobby', {
       title: 'This is the lobby',
       date: 25
     })

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { styles } from '../../styles/styles.js';
 
-const RulesScreen = ({navigation}) => {
+const RulesScreen = ({ navigation }) => {
 return (
 <View style={ styles.center }>
 <Text style={{color:'black'}}> 

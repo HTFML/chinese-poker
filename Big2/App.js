@@ -7,7 +7,7 @@ import { Text, Button, View} from 'react-native';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const App = ({ navigation }) => {
   return (
 
     <NavigationContainer>

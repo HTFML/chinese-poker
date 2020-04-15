@@ -61,7 +61,7 @@ In most popular variations, ending with a single or double two is not allowed.
 </Text>
 
 <Button title="Go to Home"
-        onPress={() => navigation.navigate('Home')}> 
+        onPress={() => navigation.navigate(Home)}> 
 </Button>
 
 </View>

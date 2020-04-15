@@ -1,16 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { View, Text, StyleSheet } from 'react-native';
-
-class Rules extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Delivery!</Text>
-      </View>
-    );
-  }
-=======
 import { View, Text, Button } from 'react-native';
 import { styles } from '../../styles/styles.js';
 import { useNavigation } from '@react-navigation/native';
@@ -80,7 +68,6 @@ In most popular variations, ending with a single or double two is not allowed.
 
 
 );
->>>>>>> fixing navigation
 }
 
 export default Rules;

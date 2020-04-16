@@ -72,12 +72,11 @@ const styles = StyleSheet.create({
       width:250,
       borderRadius:30,
     },
+
+    
     loginButton: {
       backgroundColor: "red",
     },
-    ageButton: {
-        backgroundColor: "blue",
-      },
     loginText: {
       color: 'white',
     }

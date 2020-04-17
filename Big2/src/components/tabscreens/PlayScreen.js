@@ -1,14 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ImageBackground, View, Text } from 'react-native';
+import { styles } from '../../styles/styles';
 
-class PlayScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Play!</Text>
+const PlayScreen = () => {
+  return (
+    <ImageBackground
+      source={require('../../Images/poker_table_felt.jpg')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>Play!</Text>
       </View>
-    );
-  }
-}
+    </ImageBackground>
+  );
+};
 
 export default PlayScreen;

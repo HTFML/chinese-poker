@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Image,
   TextInput,
-  TouchableHighlight,
   Text,
   Button,
   Alert,
@@ -16,7 +15,6 @@ const Lobby = ({ navigation }) => {
   const [userName, setUserName] = useState("");
 
   const handleNo = () => {
-    // It is navigating to home without user pressing ok. 
     Alert.alert("Sorry", "You must be 21 or older to play!", [
       {
         text: "Ok",

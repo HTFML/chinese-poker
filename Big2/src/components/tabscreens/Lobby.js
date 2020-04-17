@@ -16,6 +16,7 @@ const Lobby = ({ navigation }) => {
   const [userName, setUserName] = useState("");
 
   const handleNo = () => {
+    // It is navigating to home without user pressing ok. 
     Alert.alert("Sorry", "You must be 21 or older to play!", [
       {
         text: "Ok",
@@ -25,6 +26,11 @@ const Lobby = ({ navigation }) => {
     ]);
     navigation.navigate("Home")
   };
+
+  const handleYes = () => {
+    setModal(false)
+    navigation.navigate('Play', { userName: userName })
+  }
 
   return (
     <View style={styles.container}>
@@ -40,7 +46,7 @@ const Lobby = ({ navigation }) => {
           placeholder="Enter Your Username"
           keyboardType="email-address"
           underlineColorAndroid="transparent"
-          onChangeText={(userName) => setUserName({ userName })}
+          onChangeText={(userName) => setUserName(userName)}
         />
       </View>
 
@@ -50,7 +56,7 @@ const Lobby = ({ navigation }) => {
         <View style={styles.modalView}>
           <Text>Are you over 21?</Text>
           <View style={{ flexDirection: "row" }}>
-            <Button title="Yes" onPress={() => navigation.navigate("Play")} />
+            <Button title="Yes" onPress={handleYes} />
             <Button title="No" onPress={handleNo} />
           </View>
         </View>

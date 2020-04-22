@@ -4,6 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/components/tabscreens/HomeScreen.js';
 import PlayScreen from './src/components/tabscreens/PlayScreen.js';
 import Rules from './src/components/tabscreens/Rules.js'
+import LoginScreen from './src/components/Login.js'
+
 
 const Stack = createStackNavigator();
 
@@ -11,9 +13,13 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{ gestureEnabled: false }}
       >
+        <Stack.Screen 
+          name="Login" 
+          component={LoginScreen} 
+        />
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 

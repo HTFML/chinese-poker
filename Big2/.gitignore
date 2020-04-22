@@ -14,5 +14,7 @@ web-report/
 .DS_Store
 
 firebase.json
+firebaseConfig.js
 .firebaserc
 .firebase
+.env

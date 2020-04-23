@@ -5,6 +5,7 @@ import HomeScreen from './src/components/tabscreens/HomeScreen.js';
 import PlayScreen from './src/components/tabscreens/PlayScreen.js';
 import Rules from './src/components/tabscreens/Rules.js'
 import LoginScreen from './src/components/Login.js'
+import Signup from './src/components/tabscreens/Signup.js'
 
 
 const Stack = createStackNavigator();
@@ -32,11 +33,14 @@ const App = () => {
           name="Rules"
           component={Rules}
         />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+        />
 
       </Stack.Navigator>
     </NavigationContainer>
     )
 }
-
 
 export default App;

@@ -7,6 +7,7 @@ import { firebaseConfig } from './firebaseConfig'
 const Login = () => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
+const [username, setUsername] = useState('')
 
   const handleEmail = (event) => {
     setEmail(event.target.value)
@@ -16,23 +17,43 @@ const [password, setPassword] = useState('')
     setPassword(event.target.value)
   }
 
-  const handleLogin = () => {
+  const handleLogin = (username) => {
     if (firebase.apps.length === 0) {
       firebase.initializeApp(firebaseConfig);
    }
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(resp => {
-      console.log(resp)
+        console.log(resp.user),
+        setUsername(`${resp.user}`);
+      () => navigation.navigate('Home');
     })
+  }
+
+  const handleSignup = () => {
   }
 
 return (
       <View style={styles.center}>
+      {/* {!`${email}` 
+      ? */}
+        <>
         <Text style={styles.title}>Email</Text>
         <TextInput style={styles.title} autoCapitalize='none' onChange={handleEmail}/>
         <Text style={styles.title}>Password</Text>
         <TextInput style={styles.title} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
         <Button title='Login' onPress={handleLogin}/>
+        <fragment>
+        { !`${username}` 
+        ? <Button title='Signup' onPress={handleSignup}>Sign Up</Button>
+        : <></>
+        }
+        </fragment>
+        </>
+{/* 
+      : <>
+      <Text>Logged in</Text>
+      </>
+      } */}
       </View>
     );
 }

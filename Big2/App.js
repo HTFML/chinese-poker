@@ -10,6 +10,10 @@ import Signup from './src/components/tabscreens/Signup.js'
 
 const Stack = createStackNavigator();
 
+const getUserData = (user) => {
+console.log(user)
+}
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -20,6 +24,7 @@ const App = () => {
         <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
+          getUserData={getUserData}
         />
         <Stack.Screen 
           name="Home" 

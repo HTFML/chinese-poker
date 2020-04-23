@@ -4,10 +4,10 @@ import { styles } from '../styles/styles.js'
 import firebase from 'firebase'
 import { firebaseConfig } from './firebaseConfig'
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, getUserData }) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
-const [username, setUsername] = useState('')
+const [username, setUsername] = useState(null)
 
   const handleEmail = (event) => {
     setEmail(event.target.value)
@@ -23,12 +23,18 @@ const [username, setUsername] = useState('')
    }
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(resp => {
-        console.log(resp.user),
-        setUsername(`${resp.user}`);
+        console.log(resp),
+        setUsername(resp.user);
+        // getUserData(resp.user);
+        console.log(props.getUserData);
     })
   }
 
   const handleSignup = () => {
+  }
+
+  const outToggle = () => {
+    setUsername(!username)
   }
 
 return (
@@ -38,13 +44,21 @@ return (
         <TextInput style={styles.title} autoCapitalize='none' onChange={handleEmail}/>
         <Text style={styles.title}>Password</Text>
         <TextInput style={styles.title} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
-        <Button title='Login' onPress={handleLogin, () => navigation.navigate('Home')}/>
-        <fragment>
-        { !`${username}` 
+        <Button title={username ? 'Login' : 'Sign Up'} onPress={
+          handleLogin
+          // ,() => navigation.navigate('Home')
+        }
+        />
+        <Button title="Zignup" onPress={
+          outToggle
+        }/>
+        <>
+        </>
+        {/* { !`${username}` 
         ? <Button title='Signup' onPress={handleSignup}>Sign Up</Button>
         : <></>
-        }
-        </fragment>
+        } */}
+
         </>
       </View>
     );

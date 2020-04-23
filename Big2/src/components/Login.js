@@ -4,7 +4,7 @@ import { styles } from '../styles/styles.js'
 import firebase from 'firebase'
 import { firebaseConfig } from './firebaseConfig'
 
-const Login = () => {
+const Login = ({ navigation }) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [username, setUsername] = useState('')
@@ -25,7 +25,6 @@ const [username, setUsername] = useState('')
       .then(resp => {
         console.log(resp.user),
         setUsername(`${resp.user}`);
-      () => navigation.navigate('Home');
     })
   }
 
@@ -34,14 +33,12 @@ const [username, setUsername] = useState('')
 
 return (
       <View style={styles.center}>
-      {/* {!`${email}` 
-      ? */}
         <>
         <Text style={styles.title}>Email</Text>
         <TextInput style={styles.title} autoCapitalize='none' onChange={handleEmail}/>
         <Text style={styles.title}>Password</Text>
         <TextInput style={styles.title} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
-        <Button title='Login' onPress={handleLogin}/>
+        <Button title='Login' onPress={handleLogin, () => navigation.navigate('Home')}/>
         <fragment>
         { !`${username}` 
         ? <Button title='Signup' onPress={handleSignup}>Sign Up</Button>
@@ -49,11 +46,6 @@ return (
         }
         </fragment>
         </>
-{/* 
-      : <>
-      <Text>Logged in</Text>
-      </>
-      } */}
       </View>
     );
 }

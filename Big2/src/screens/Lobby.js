@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import Modal from "react-native-modal";
-import UserCard from '../UserCard';
+import UserCard from '../components/UserCard';
 
 const Lobby = ({ navigation }) => {
   const [isModalVisible, setModal] = useState(false);

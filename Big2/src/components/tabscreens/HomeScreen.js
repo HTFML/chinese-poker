@@ -1,12 +1,23 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
+  const [user, setUser] = useState(null)
+
+  const load = () => {
+      AsyncStorage.getItem(`userData`)
+      .then(r => {
+        let data = JSON.parse(r)
+        setUser(data)
+      })  
+  }
+
   return (
     <View style={styles.mainContainer}>
-      <Text 
-        style={styles.header}>
-        Welcome to Chinese Poker(Big 2) User!
+      {user ? null : load()}
+      {console.log(user)}
+      <Text style={styles.header}>
+        Welcome {user ? user.user.email : null}
       </Text>
       <Image 
         source={require('../../Images/cards.jpg')} 

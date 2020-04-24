@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, AsyncStorage } from 'react-native';
 import { styles } from '../styles/styles.js'
 import firebase from 'firebase'
 import { firebaseConfig } from './firebaseConfig'
 
-const Login = () => {
+const Login = ({ navigation }) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
+const [userData, setUserData] = useState(null)
 
   const handleEmail = (event) => {
     setEmail(event.target.value)
@@ -22,8 +23,13 @@ const [password, setPassword] = useState('')
    }
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(resp => {
-      console.log(resp)
+        setUserData(true)
+        AsyncStorage.setItem(`userData`, JSON.stringify(resp))
     })
+  }
+
+  const auth = () => {
+    navigation.navigate('Home')
   }
 
 return (
@@ -33,6 +39,7 @@ return (
         <Text style={styles.title}>Password</Text>
         <TextInput style={styles.title} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
         <Button title='Login' onPress={handleLogin}/>
+        {userData ? auth() : null}
       </View>
     );
 }

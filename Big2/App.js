@@ -1,11 +1,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './src/components/tabscreens/HomeScreen.js';
-import PlayScreen from './src/components/tabscreens/PlayScreen.js';
-import Rules from './src/components/tabscreens/Rules.js'
-import LoginScreen from './src/components/Login.js'
-
+import HomeScreen from './src/screens/HomeScreen.js';
+import PlayScreen from './src/screens/PlayScreen.js';
+import Rules from './src/screens/Rules.js'
+import LoginScreen from './src/screens/Login.js'
 
 const Stack = createStackNavigator();
 
@@ -13,13 +12,13 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Home"
         screenOptions={{ gestureEnabled: false }}
       >
-        <Stack.Screen 
+        {/* <Stack.Screen 
           name="Login" 
           component={LoginScreen} 
-        />
+        /> */}
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 

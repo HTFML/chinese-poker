@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
         Welcome {user ? user.user.email : null}
       </Text>
       <Image 
-        source={require('../../Images/cards.jpg')} 
+        source={require('../../assets/cards.jpg')} 
         style={styles.img} 
       />
       <Button 

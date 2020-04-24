@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, Button, Alert} from 'react-native';
  
 const SettingsScreen = () => {
 
+  const user = {
+    username: "oneil",
+    password: "password123"
+  }
   
   return(
     <View style={styles.mainContainer}>
-      <Text>
-        Settings!
-      </Text>
+      <Text>Would you like to change your</Text>
+      <Button 
+        title="Username" 
+        onPress={()=>Alert.alert("Changing Username")}
+      />  
+      <Text>or</Text> 
+      <Button 
+        title="Password"
+        onPress={()=>Alert.alert("Changing Password")}
+      /> 
+      <Text>?</Text>
     </View>
   )
 }
@@ -18,14 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  header: {
-    fontSize: 20,
-  },
-  img: {
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2
   }
 })
 

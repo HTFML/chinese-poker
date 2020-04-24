@@ -4,7 +4,7 @@ import { styles } from '../styles/styles.js'
 import firebase from 'firebase'
 import { firebaseConfig } from './firebaseConfig'
 
-const Login = ({ navigation, getUserData }) => {
+const Login = ({ props, navigation, getUserData }) => {
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
 const [username, setUsername] = useState(null)
@@ -26,7 +26,7 @@ const [username, setUsername] = useState(null)
         console.log(resp),
         setUsername(resp.user);
         // getUserData(resp.user);
-        console.log(props.getUserData);
+        // console.log(props.getUserData(resp.user));
     })
   }
 
@@ -44,9 +44,8 @@ return (
         <TextInput style={styles.title} autoCapitalize='none' onChange={handleEmail}/>
         <Text style={styles.title}>Password</Text>
         <TextInput style={styles.title} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
-        <Button title={username ? 'Login' : 'Sign Up'} onPress={
-          handleLogin
-          // ,() => navigation.navigate('Home')
+        <Button title={!username ? 'Login' : 'Sign Up'} onPress={
+          handleLogin, () =>navigation.navigate('Home')
         }
         />
         <Button title="Zignup" onPress={

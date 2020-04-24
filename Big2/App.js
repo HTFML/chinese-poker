@@ -11,7 +11,7 @@ import Signup from './src/components/tabscreens/Signup.js'
 const Stack = createStackNavigator();
 
 const getUserData = (user) => {
-console.log(user)
+  return console.log(user)
 }
 
 const App = () => {

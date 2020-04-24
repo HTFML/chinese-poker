@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import RedButton from '../components/Button'
 import {
   View,
   StyleSheet,
-  Image,
-  TextInput,
   Text,
-  Button,
   Alert,
+  Button,
 } from "react-native";
 import Modal from "react-native-modal";
 import UserCard from '../components/UserCard';
@@ -38,27 +37,12 @@ const Lobby = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.inputContainer}>
-        <Image
-          style={styles.inputIcon}
-          source={{
-            uri: "https://png.icons8.com/message/ultraviolet/50/3498db",
-          }}
-        />
-        <TextInput
-          style={styles.inputs}
-          placeholder="Enter Your Username"
-          keyboardType="email-address"
-          underlineColorAndroid="transparent"
-          onChangeText={(userName) => setUserName(userName)}
-        />
-      </View> */}
       <UserCard username={user.username} avatar={user.avatar}/>
       <UserCard/>
       <UserCard/>
       <UserCard/>
 
-      <Button title="Next" onPress={() => setModal(true)} />
+      <RedButton title="Next" onPress={() => setModal(true)} />
 
       <Modal isVisible={isModalVisible} style={styles.modalContainer}>
         <View style={styles.modalView}>
@@ -69,6 +53,7 @@ const Lobby = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+
     </View>
   );
 };
@@ -91,45 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center", 
     margin: 0,
   },
-  inputContainer: {
-    borderBottomColor: "#F5FCFF",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 30,
-    borderBottomWidth: 1,
-    width: 250,
-    height: 45,
-    marginBottom: 20,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  inputs: {
-    height: 45,
-    textAlign: "center",
-    marginLeft: -30,
-    borderBottomColor: "#FFFFFF",
-    flex: 1,
-  },
-  inputIcon: {
-    width: 30,
-    height: 30,
-    marginLeft: 15,
-    justifyContent: "center",
-  },
-  buttonContainer: {
-    height: 45,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 20,
-    width: 250,
-    borderRadius: 30,
-  },
-  loginButton: {
-    backgroundColor: "red",
-  },
-  loginText: {
-    color: "white",
-  },
 });
 
 export default Lobby;
+

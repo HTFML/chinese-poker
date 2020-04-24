@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, Image, AsyncStorage } from 'react-native';
+import Button from '../components/Button'
+import { View, Text, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)

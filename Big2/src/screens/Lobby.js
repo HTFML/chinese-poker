@@ -21,15 +21,12 @@ const Lobby = ({ navigation }) => {
   }
 
   const handleNo = () => {
-    Alert.alert("Sorry", "You must be 21 or older to play!", [
+    Alert.alert("Sorry", "You must be 21 or over to play", [
       {
-        text: "Ok",
-        onPress: () => setModal(false)
-      },
-      
-    ]);
-    navigation.navigate("Home")
-  };
+        text: 'OK', onPress: () => navigation.navigate('Home') 
+      }
+    ])
+  }
 
   const handleYes = () => {
     setModal(false)
@@ -38,21 +35,6 @@ const Lobby = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <View style={styles.inputContainer}>
-        <Image
-          style={styles.inputIcon}
-          source={{
-            uri: "https://png.icons8.com/message/ultraviolet/50/3498db",
-          }}
-        />
-        <TextInput
-          style={styles.inputs}
-          placeholder="Enter Your Username"
-          keyboardType="email-address"
-          underlineColorAndroid="transparent"
-          onChangeText={(userName) => setUserName(userName)}
-        />
-      </View> */}
       <UserCard username={user.username} avatar={user.avatar}/>
       <UserCard/>
       <UserCard/>

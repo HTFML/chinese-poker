@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, Image, AsyncStorage } from 'react-native';
+import { View, Text, Button, StyleSheet, Image, AsyncStorage, Alert } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)
@@ -25,6 +25,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="PLAY NOW"
+        onPress={()=> handleNo}
         onPress={() => navigation.navigate('Lobby')}
       />
       <Button 

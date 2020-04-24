@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="PLAY NOW"
-        onPress={() => navigation.navigate('Play')}
+        onPress={() => navigation.navigate('Lobby')}
       />
       <Button 
         title="RULES"

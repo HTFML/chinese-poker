@@ -4,7 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen.js';
 import PlayScreen from './src/screens/PlayScreen.js';
 import Rules from './src/screens/Rules.js'
+import Lobby from './src/screens/Lobby'
 import SettingsScreen from './src/screens/SettingsScreen';
+import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
 // import LoginScreen from './src/screens/Login.js'
 
 const Stack = createStackNavigator();
@@ -41,6 +43,10 @@ const App = () => {
         <Stack.Screen 
           name="Settings"
           component={SettingsScreen}
+        />
+        <Stack.Screen 
+          name="Change Password"
+          component={PasswordChangeScreen}
         />
 
       </Stack.Navigator>

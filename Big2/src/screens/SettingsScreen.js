@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Alert} from 'react-native';
  
-const SettingsScreen = () => {
+const SettingsScreen = ({ navigation }) => {
 
   const user = {
     username: "oneil",
@@ -10,17 +10,13 @@ const SettingsScreen = () => {
   
   return(
     <View style={styles.mainContainer}>
-      <Text>Would you like to change your</Text>
+      <Text>Change your</Text>
       <Button 
-        title="Username" 
-        onPress={()=>Alert.alert("Changing Username")}
+        title="Password" 
+        onPress={()=>navigation.navigate("Change Password", {user})}
       />  
-      <Text>or</Text> 
-      <Button 
-        title="Password"
-        onPress={()=>Alert.alert("Changing Password")}
-      /> 
-      <Text>?</Text>
+      <Button title="Volume" onPress={()=>Alert.alert("Changing Volume coming soon")}/>
+      <Button title="Background" onPress={()=>Alert.alert("Changing background coming soon")}/>
     </View>
   )
 }

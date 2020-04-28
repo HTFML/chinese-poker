@@ -57,7 +57,6 @@ const Login = ({ navigation }) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){
-          console.log(resp)
           setUserData(true)
           AsyncStorage.setItem(`userData`, JSON.stringify(resp))
         }

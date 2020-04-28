@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert} from 'react-native';
 
-const PasswordChangeScreen = ({route}) => {
+const PasswordChangeScreen = ({ route }) => {
 
   const { user } = route.params
 

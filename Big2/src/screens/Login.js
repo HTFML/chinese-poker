@@ -5,10 +5,8 @@ import firebase from 'firebase';
 import { firebaseConfig } from '../../firebaseConfig';
 
 const Login = ({ navigation }) => {
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [userData, setUserData] = useState(null)
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
 
   const handleEmail = (event) => {
     setEmail(event.target.value)

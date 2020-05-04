@@ -7,6 +7,7 @@ import Rules from './src/screens/Rules.js'
 import Lobby from './src/screens/Lobby'
 import SettingsScreen from './src/screens/SettingsScreen';
 import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
+import AudioScreen from './src/screens/AudioScreen'
 // import LoginScreen from './src/screens/Login.js'
 
 const Stack = createStackNavigator();
@@ -47,6 +48,10 @@ const App = () => {
         <Stack.Screen 
           name="Change Password"
           component={PasswordChangeScreen}
+        />
+        <Stack.Screen 
+          name="Audio"
+          component={AudioScreen}
         />
 
       </Stack.Navigator>

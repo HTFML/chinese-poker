@@ -15,7 +15,10 @@ const SettingsScreen = ({ navigation }) => {
         title="Password" 
         onPress={()=>navigation.navigate("Change Password", {user})}
       />  
-      <Button title="Audio" onPress={()=>Alert.alert("Changing Volume coming soon")}/>
+      <Button 
+        title="Audio" 
+        onPress={()=>navigation.navigate("Audio")}
+      />
       <Button title="Enviornment" onPress={()=>Alert.alert("Changing background coming soon")}/>
     </View>
   )

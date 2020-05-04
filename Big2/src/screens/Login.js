@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, TextInput, AsyncStorage } from 'react-native';
 import { styles } from '../styles.js';
 import firebase from 'firebase';
+
 import { firebaseConfig } from '../utils/firebaseConfig';
 
 const Login = ({ navigation }) => {
@@ -10,6 +11,7 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const [userData, setUserData] = useState(null)
   const [signup, setSignup] = useState(false)
+
 
   const handleEmail = (event) => {
     setEmail(event.target.value)

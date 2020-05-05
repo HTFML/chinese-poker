@@ -8,7 +8,9 @@ import Lobby from './src/screens/Lobby'
 import SettingsScreen from './src/screens/SettingsScreen';
 import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
 import AudioScreen from './src/screens/AudioScreen'
+import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
 // import LoginScreen from './src/screens/Login.js'
+
 
 const Stack = createStackNavigator();
 
@@ -53,7 +55,10 @@ const App = () => {
           name="Audio"
           component={AudioScreen}
         />
-
+        <Stack.Screen 
+          name="Enviornment"
+          component={EnviornmentChangeScreen}
+        />
       </Stack.Navigator>
 
     </NavigationContainer>

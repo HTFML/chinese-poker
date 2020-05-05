@@ -19,7 +19,10 @@ const SettingsScreen = ({ navigation }) => {
         title="Audio" 
         onPress={()=>navigation.navigate("Audio")}
       />
-      <Button title="Enviornment" onPress={()=>Alert.alert("Changing background coming soon")}/>
+      <Button 
+        title="Enviornment" 
+        onPress={()=>navigation.navigate("Enviornment")}
+      />
     </View>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native'
+import { styles } from '../styles'
 
-function EnviornementChangeScreen() {
+const EnviornementChangeScreen = () => {
   return (
-    <View>
+    <View style={styles.center}>
       <Text>Enviornement Change Screen</Text>
     </View>
   )

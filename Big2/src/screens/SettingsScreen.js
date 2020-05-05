@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert} from 'react-native';
+import React from 'react';
+import { View, Button } from 'react-native';
+import { styles } from '../styles'
  
 const SettingsScreen = ({ navigation }) => {
-
-  const user = {
-    username: "oneil",
-    password: "password123"
-  }
   
   return(
-    <View style={styles.mainContainer}>
-      
+    <View style={styles.center}>
       <Button 
         title="Password" 
-        onPress={()=>navigation.navigate("Change Password", {user})}
+        onPress={()=>navigation.navigate("Change Password")}
       />  
       <Button 
         title="Audio" 
@@ -26,13 +21,5 @@ const SettingsScreen = ({ navigation }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
 
 export default SettingsScreen

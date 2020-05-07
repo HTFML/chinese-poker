@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, Button } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import { styles } from '../styles.js';
 import Background from '../../assets/parchment.jpg';
 

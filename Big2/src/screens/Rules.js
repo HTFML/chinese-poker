@@ -1,15 +1,15 @@
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, ImageBackground } from 'react-native';
 import { styles } from '../styles.js';
-import Background from '../../assets/parchment.jpg';
+import background from '../../assets/parchment.jpg';
 
 
 const RulesScreen = ({ navigation }) => {
 return (
 
-<ScrollView style={styles.mainContainer}>
-
-<Text style={{backgroundImage:`url(${Background})`}}> 
+<ScrollView style={styles.rules}>
+<ImageBackground  style= { styles.rules } source={background}>
+<Text> 
 <Text style={{fontWeight: "bold"}}>Rules: </Text>
 Cards may be played as singles or in groups of two, three or five (var. 1 and 8), in combinations which resemble poker hands. The leading card to a trick sets down the number of cards to be played; all the cards of a trick must contain the same number of cards. The highest ranking card is 2 instead of A. The combinations and their rankings are as follows, mostly based on poker hands.
 {"\n"}
@@ -71,7 +71,7 @@ Refer to scoring section.
 {"\n"}
 In most popular variations, ending with a single or double two is not allowed.
 </Text>
-
+</ImageBackground>
 </ScrollView>
 );
 }

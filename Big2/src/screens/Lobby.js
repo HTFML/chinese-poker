@@ -23,11 +23,14 @@ const Lobby = ({ navigation }) => {
     Alert.alert("Sorry", "You must be 21 or older to play!", [
       {
         text: "Ok",
-        onPress: () => setModal(false)
+        onPress: () => {
+          setModal(false)
+          navigation.navigate("Home")
+        }
       },
       
     ]);
-    navigation.navigate("Home")
+    // navigation.navigate("Home")
   };
 
   const handleYes = () => {
@@ -42,7 +45,7 @@ const Lobby = ({ navigation }) => {
       <UserCard/>
       <UserCard/>
 
-      <RedButton title="Next" onPress={() => setModal(true)} />
+      <RedButton width='30%' title="Next" onPress={() => setModal(true)} />
 
       <Modal isVisible={isModalVisible} style={styles.modalContainer}>
         <View style={styles.modalView}>

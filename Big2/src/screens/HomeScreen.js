@@ -27,11 +27,15 @@ const HomeScreen = ({ navigation }) => {
       <Button 
         title="PLAY NOW"
         onPress={() => navigation.navigate('Lobby')}
+        width='45%'
+        margin={10}
       />
       <Button 
         title="RULES"
         onPress={() => navigation.navigate('Rules')}
-      /> 
+        width='45%'
+        margin={10}
+      />
     </View>
   )
 }

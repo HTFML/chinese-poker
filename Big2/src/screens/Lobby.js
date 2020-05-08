@@ -28,9 +28,7 @@ const Lobby = ({ navigation }) => {
           navigation.navigate("Home")
         }
       },
-      
     ]);
-    // navigation.navigate("Home")
   };
 
   const handleYes = () => {

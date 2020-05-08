@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, TextInput, AsyncStorage } from 'react-native';
 import { styles } from '../styles.js';
 import firebase from 'firebase';
-import { firebaseConfig } from '../../firebaseConfig';
+import { firebaseConfig } from '../utils/firebaseConfig'
 
 const Login = ({ navigation }) => {
 

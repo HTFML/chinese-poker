@@ -15,6 +15,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       {user ? null : load()}
+
       <Text style={styles.header}>
         Welcome {user ? user.user.email : null}
       </Text>
@@ -29,6 +30,10 @@ const HomeScreen = ({ navigation }) => {
       <Button 
         title="RULES"
         onPress={() => navigation.navigate('Rules')}
+      /> 
+      <Button 
+        title="SETTINGS"
+        onPress={() => navigation.navigate('Settings')}
       /> 
     </View>
   )

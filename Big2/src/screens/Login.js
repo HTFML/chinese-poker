@@ -33,7 +33,6 @@ const Login = ({ navigation }) => {
           setUserData(true)
           AsyncStorage.setItem(`userData`, JSON.stringify(resp))
         }
-<<<<<<< HEAD
     })
   }
 
@@ -48,22 +47,6 @@ const Login = ({ navigation }) => {
     })
   }
 
-=======
-    })
-  }
-
-  const handleSignup = () => {
-    firebaseInit()
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(resp => {
-        if (resp){
-          setUserData(true)
-          AsyncStorage.setItem(`userData`, JSON.stringify(resp))
-        }
-    })
-  }
-
->>>>>>> add signup function
   const authToggle = () => {
     setSignup(!signup)
   }

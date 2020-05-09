@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, Image, AsyncStorage } from 'react-native';
+import Button from '../components/Button'
+import { View, Text, StyleSheet, Image, AsyncStorage } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)
@@ -26,10 +27,15 @@ const HomeScreen = ({ navigation }) => {
       <Button 
         title="PLAY NOW"
         onPress={() => navigation.navigate('Lobby')}
+        width='45%'
+        margin={10}
       />
       <Button 
         title="RULES"
         onPress={() => navigation.navigate('Rules')}
+        width='45%'
+        margin={10}
+      />
       /> 
       <Button 
         title="SETTINGS"

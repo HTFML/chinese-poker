@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       {user ? null : load()}
-      {console.log(user)}
+
       <Text style={styles.header}>
         Welcome {user ? user.user.email : null}
       </Text>
@@ -36,6 +36,11 @@ const HomeScreen = ({ navigation }) => {
         width='45%'
         margin={10}
       />
+      /> 
+      <Button 
+        title="SETTINGS"
+        onPress={() => navigation.navigate('Settings')}
+      /> 
     </View>
   )
 }

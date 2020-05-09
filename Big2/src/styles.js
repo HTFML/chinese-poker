@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
@@ -10,5 +9,8 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginBottom: 16
+  },
+  input: {
+    backgroundColor: `#fff`
   }
 });

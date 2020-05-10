@@ -13,7 +13,7 @@ const TextInput = (props: Props) => {
     return (
         <View style={styles.container}>
             <NativeTextInput 
-            placeholder = 'put your fucking name'
+            placeholder = 'put your name'
 
             />
         </View>

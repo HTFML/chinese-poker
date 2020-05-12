@@ -28,8 +28,7 @@ const Button = (props: Props) => {
     >
       <Text style={{
         ...styles.text,
-        color,
-        
+        color
       }}>
         {title}
       </Text>

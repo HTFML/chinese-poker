@@ -48,6 +48,8 @@ const HomeScreen = ({ navigation }) => {
       <Button 
         title="SETTINGS"
         onPress={() => navigation.navigate('Settings')}
+        width='45%'
+        margin={10}
       /> 
     </View>
   )

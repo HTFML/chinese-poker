@@ -12,7 +12,6 @@ const ChangeScreen = ({ route, navigation }) => {
   const [ text, setText ] = useState("")
 
   const names = ["jim", "bob", "mike"]
-
   React.useLayoutEffect(() => {navigation.setOptions({title: title})}, [navigation, title])
 
   const confirmOldPassword = () => {

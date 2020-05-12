@@ -11,6 +11,7 @@ const PasswordChangeScreen = ({ route, navigation }) => {
   const [ confirmPW, setConfirmPW ] = useState("")
   const [ text, setText ] = useState("")
 
+  const names = ["jim", "bob", "mike"]
 
   const confirmOldPassword = () => {
     if (originalPW === password){
@@ -24,21 +25,26 @@ const PasswordChangeScreen = ({ route, navigation }) => {
   const matchPasswords = () => {
     if (newPW==confirmPW){
       setText(confirmPW)
-      Alert.alert("Password Successfully Changed")
+      Alert.alert("Password Successfully Changed!")
       // navigation.navigate('Settings')
     } else {
       return Alert.alert("Passwords do not match!")
     }
   }
 
-  const handleSubmit = () => {
+  const changePassword = () => {
     confirmOldPassword()
   }
 
   const changeUsername = () => {
-    setText(newUserName)
-    Alert.alert("Username Changed")
-    // navigation.navigate("Settings")
+    if (names.includes(newUserName)){
+      setNewUsername("")
+      return Alert.alert("Username already taken!")
+    } else {
+      setText(newUserName)
+      return Alert.alert("Username Changed!")
+      // navigation.navigate("Settings")
+    }
   }
 
   if (password) {
@@ -70,9 +76,9 @@ const PasswordChangeScreen = ({ route, navigation }) => {
         />
         <Button
           title="SUBMIT" 
-          onPress={()=>handleSubmit()}
+          onPress={()=>changePassword()}
           width='45%'
-          margin={10}
+          margin={15}
         />
         <Text>{"\n"}Original pw: {password}</Text>
         <Text>New pw: {text}</Text> 
@@ -92,7 +98,7 @@ const PasswordChangeScreen = ({ route, navigation }) => {
           title="SUBMIT" 
           onPress={()=>changeUsername()}
           width='45%'
-          margin={10}
+          margin={15}
         />
         <Text>New Username: {text}</Text>
       </View>
@@ -103,7 +109,7 @@ const PasswordChangeScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 23,
-    alignContent: "center",
+    alignContent: 'center',
     justifyContent: 'center'
   },
   input: {
@@ -113,6 +119,5 @@ const styles = StyleSheet.create({
     margin: 15
   }
 })
-
 
 export default PasswordChangeScreen

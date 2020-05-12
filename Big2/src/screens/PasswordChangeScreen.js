@@ -12,9 +12,10 @@ const PasswordChangeScreen = ({ route, navigation }) => {
 
 
   const confirmOldPassword = () => {
-    if (originalPW==password){
+    if (originalPW === password){
       matchPasswords() 
     } else {
+      setOrginialPW("")
       return Alert.alert("Please Enter Your Original Password")
     }
   }
@@ -22,8 +23,8 @@ const PasswordChangeScreen = ({ route, navigation }) => {
   const matchPasswords = () => {
     if (newPW==confirmPW){
       setText(confirmPW)
-      Alert.alert("Your New Password is " + confirmPW)
-      // navigation.navigate('Settings')
+      Alert.alert("Password Successfully Changed")
+      navigation.navigate('Settings')
     } else {
       return Alert.alert("Passwords do not match!")
     }
@@ -32,7 +33,6 @@ const PasswordChangeScreen = ({ route, navigation }) => {
   const handleSubmit = () => {
     confirmOldPassword()
   }
-
 
   return(
     <View style={styles.container}> 
@@ -68,7 +68,7 @@ const PasswordChangeScreen = ({ route, navigation }) => {
       />
       
       <Text>{"\n"}Original pw: {password}</Text>
-      <Text>{"\n"}New pw: {text}</Text>
+      <Text>New pw: {text}</Text>
     </View>
   )
 }
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40, 
     borderColor: 'gray', 
-    borderWidth: 1, 
+    borderWidth: 3, 
     margin: 15
   }
 })

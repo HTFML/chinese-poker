@@ -9,6 +9,7 @@ const SettingsScreen = ({ navigation }) => {
     username: "oneil",
     password: "password123"
   }
+  
   return(
     <View style={styles.center}>
       <Button 

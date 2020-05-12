@@ -9,7 +9,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
 import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
-// import LoginScreen from './src/screens/Login.js'
+import Login from './src/screens/Login.js'
 
 
 const Stack = createStackNavigator();
@@ -18,13 +18,13 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{ gestureEnabled: false }}
       >
-        {/* <Stack.Screen 
+        <Stack.Screen 
           name="Login" 
           component={Login} 
-        /> */}
+        />
         <Stack.Screen 
           name="Home" 
           component={HomeScreen} 

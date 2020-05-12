@@ -4,10 +4,9 @@ const { height } = Dimensions.get('window')
 export const isSmallDevice = height < 700
 export const isIos = Platform.OS === 'ios'
 
-const colors = {
-  red: '#FF7770'
-}
-
-export default {
-  colors,
+export const colors = {
+  red: '#FF7770',
+  grey: '#b3b3b3',
+  darkGrey: '#808080',
+  yellow: '#ffff00'
 }

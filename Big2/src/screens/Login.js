@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, AsyncStorage } from 'react-native';
+import { View, Text, Button, AsyncStorage } from 'react-native';
 import { styles } from '../styles.js';
 import firebase from 'firebase';
 import { firebaseConfig } from '../utils/firebaseConfig';
+import TextInput from '../components/TextInput';
 
 const Login = ({ navigation }) => {
 
@@ -58,9 +59,9 @@ const Login = ({ navigation }) => {
 return (
       <View style={styles.center}>
         <Text style={styles.title}>Email</Text>
-        <TextInput style={styles.input} autoCapitalize='none' onChange={handleEmail}/>
+        <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
         <Text style={styles.title}>Password</Text>
-        <TextInput style={styles.input} secureTextEntry autoCapitalize='none' onChange={handlePassword}/>
+        <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
         <Button title={signup ? `Already have an account?` : `New user?`} onPress={authToggle} />
         <Button title={signup ? 'Signup' : 'Login'} onPress={signup ? handleSignup : handleLogin}/>
         {userData ? auth() : null}

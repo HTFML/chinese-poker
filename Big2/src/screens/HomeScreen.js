@@ -16,7 +16,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       {user ? null : load()}
-      <TextInput />
       <Text style={styles.header}>
         Welcome {user ? user.user.email : null}
       </Text>
@@ -43,6 +42,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -9,11 +9,12 @@ const SettingsScreen = ({ navigation }) => {
     username: "oneil",
     password: "password123"
   }
+  
   return(
     <View style={styles.center}>
       <Button 
         title="USER NAME" 
-        onPress={()=>Alert.alert("User Name change coming soon!")}
+        onPress={()=>navigation.navigate("Change Password", {username: user.username})}
         width='45%'
         margin={10}
       />

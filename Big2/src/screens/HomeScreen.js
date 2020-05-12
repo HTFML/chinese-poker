@@ -25,7 +25,11 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
+<<<<<<< HEAD
       {!user && currentUser()}
+=======
+      {user ? null : load()}
+>>>>>>> password
       <Text style={styles.header}>
         Welcome {user && user.email}
       </Text>

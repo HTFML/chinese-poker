@@ -10,7 +10,4 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 16
   },
-  input: {
-    backgroundColor: `#fff`
-  }
 });

@@ -12,14 +12,6 @@ const Login = ({ navigation }) => {
   const [userData, setUserData] = useState(null)
   const [signup, setSignup] = useState(false)
 
-  const handleEmail = (event) => {
-    setEmail(event.target.value)
-  }
-
-  const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
   const firebaseInit = () => {
     if (firebase.apps.length === 0) {
     return  firebase.initializeApp(firebaseConfig);

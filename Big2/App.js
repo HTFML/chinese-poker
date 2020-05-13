@@ -36,12 +36,9 @@ const App = () => {
           name="Rules"
           component={Rules}
         />
-
       </Stack.Navigator>
-
     </NavigationContainer>
-    )
+  )
 }
-
 
 export default App;

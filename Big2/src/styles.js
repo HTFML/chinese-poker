@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
@@ -11,6 +10,4 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 16
   },
-  rules: {
-  }
 });

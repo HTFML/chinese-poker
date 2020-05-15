@@ -6,7 +6,7 @@ import PlayScreen from './src/screens/PlayScreen.js';
 import Rules from './src/screens/Rules.js'
 import Lobby from './src/screens/Lobby'
 import SettingsScreen from './src/screens/SettingsScreen';
-import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
+import ChangeScreen from './src/screens/ChangeScreen'
 import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
 import Login from './src/screens/Login.js'
@@ -40,6 +40,22 @@ const App = () => {
         <Stack.Screen 
           name="Rules"
           component={Rules}
+        />
+        <Stack.Screen 
+          name="Settings"
+          component={SettingsScreen}
+        />
+        <Stack.Screen 
+          name="Change Screen"
+          component={ChangeScreen}
+        />
+        <Stack.Screen 
+          name="Audio"
+          component={AudioScreen}
+        />
+        <Stack.Screen 
+          name="Enviornment"
+          component={EnviornmentChangeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

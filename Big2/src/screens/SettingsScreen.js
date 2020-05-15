@@ -14,13 +14,13 @@ const SettingsScreen = ({ navigation }) => {
     <View style={styles.center}>
       <Button 
         title="USER NAME" 
-        onPress={()=>navigation.navigate("Change Password", {username: user.username})}
+        onPress={()=>navigation.navigate("Change Screen", {title: "Change Username", username: user.username})}
         width='45%'
         margin={10}
       />
       <Button 
         title="PASSWORD" 
-        onPress={()=>navigation.navigate("Change Password", {password: user.password})}
+        onPress={()=>navigation.navigate("Change Screen", {title: "Change Password", password: user.password})}
         width='45%'
         margin={10}
       />  
@@ -31,7 +31,7 @@ const SettingsScreen = ({ navigation }) => {
         margin={10}
       />
       <Button 
-        title="ENVIORNMEENT" 
+        title="ENVIORNMENT" 
         onPress={()=>navigation.navigate("Enviornment")}
         width='45%'
         margin={10}

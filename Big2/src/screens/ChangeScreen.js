@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Button from '../components/Button'
 import { View, Text, TextInput, Alert, StyleSheet } from 'react-native'
 
-const PasswordChangeScreen = ({ route, navigation }) => {
+const ChangeScreen = ({ route, navigation }) => {
 
-  const { username, password } = route.params
+  const { username, password, title } = route.params
   const [ newUserName, setNewUsername ] = useState("")
   const [ originalPW, setOrginialPW ] = useState("")
   const [ newPW, setNewPW ] = useState("")
@@ -12,6 +12,8 @@ const PasswordChangeScreen = ({ route, navigation }) => {
   const [ text, setText ] = useState("")
 
   const names = ["jim", "bob", "mike"]
+
+  React.useLayoutEffect(() => {navigation.setOptions({title: title})}, [navigation, title])
 
   const confirmOldPassword = () => {
     if (originalPW === password){
@@ -120,4 +122,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default PasswordChangeScreen
+export default ChangeScreen

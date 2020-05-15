@@ -32,7 +32,10 @@ const Login = ({ navigation }) => {
         if (resp){
           setUserData(true)
         }
-    })
+     })
+    .catch(err => {
+      console.log('Error: ', err);
+    });
   }
 
   const handleSignup = () => {
@@ -45,7 +48,10 @@ const Login = ({ navigation }) => {
             email: email,
           })
         }
-    })
+      })
+      .catch(err => {
+        console.log('Error: ', err);
+      });
   }
 
   const authToggle = () => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image, AsyncStorage } from 'react-native';
-import firebase from 'firebase';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import * as firebase from 'firebase';
+import 'firebase/firestore'
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)
@@ -69,6 +69,5 @@ const styles = StyleSheet.create({
     borderRadius: 100 / 2
   }
 })
-
 
 export default HomeScreen;

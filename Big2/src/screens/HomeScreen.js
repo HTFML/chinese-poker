@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'
 import { View, Text, StyleSheet, Image, AsyncStorage } from 'react-native';
+import firebase from 'firebase';
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)
 
-  const load = () => {
-      AsyncStorage.getItem(`userData`)
-      .then(r => {
-        let data = JSON.parse(r)
-        setUser(data)
-      })  
+  const currentUser = () => {
+    let currentUser = firebase.auth().currentUser
+     
+    firebase.firestore().collection('users').doc(currentUser.uid).get()
+    .then(resp => {
+      if (!resp.exists) {
+        console.log('No such User!');
+      } else {
+        setUser(resp.data())
+      }
+    })
+    .catch(err => {
+      console.log('Error: ', err);
+    });
   }
 
   return (
     <View style={styles.mainContainer}>
-      {user ? null : load()}
-
+      {!user && currentUser()}
       <Text style={styles.header}>
-        Welcome {user ? user.user.email : null}
+        Welcome {user && user.email}
       </Text>
       <Image 
         source={require('../../assets/cards.jpg')} 

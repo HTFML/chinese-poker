@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Button from '../components/Button'
 import { View, Text, StyleSheet, Image, AsyncStorage } from 'react-native';
 import firebase from 'firebase';
@@ -55,6 +56,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -9,7 +9,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import PasswordChangeScreen from './src/screens/PasswordChangeScreen'
 import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
-import LoginScreen from './src/screens/Login.js'
+import Login from './src/screens/Login.js'
 
 
 const Stack = createStackNavigator();
@@ -22,8 +22,8 @@ const App = () => {
         screenOptions={{ gestureEnabled: false }}
       >
         <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
+          name="Login"
+          component={Login} 
         />
         <Stack.Screen 
           name="Home" 

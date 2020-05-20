@@ -22,7 +22,7 @@ const App = () => {
         screenOptions={{ gestureEnabled: false }}
       >
         <Stack.Screen 
-          name="Login" 
+          name="Login"
           component={Login} 
         />
         <Stack.Screen 
@@ -41,27 +41,9 @@ const App = () => {
           name="Rules"
           component={Rules}
         />
-        <Stack.Screen 
-          name="Settings"
-          component={SettingsScreen}
-        />
-        <Stack.Screen 
-          name="Change Password"
-          component={PasswordChangeScreen}
-        />
-        <Stack.Screen 
-          name="Audio"
-          component={AudioScreen}
-        />
-        <Stack.Screen 
-          name="Enviornment"
-          component={EnviornmentChangeScreen}
-        />
       </Stack.Navigator>
-
     </NavigationContainer>
-    )
+  )
 }
-
 
 export default App;

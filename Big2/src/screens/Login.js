@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, AsyncStorage } from 'react-native';
+import { View, Text, Button, TextInput } from 'react-native';
 import { styles } from '../styles.js';
 import firebase from 'firebase';
 import { firebaseConfig } from '../utils/firebaseConfig';
@@ -24,9 +24,11 @@ const Login = ({ navigation }) => {
       .then(resp => {
         if (resp){
           setUserData(true)
-          AsyncStorage.setItem(`userData`, JSON.stringify(resp))
         }
-    })
+     })
+    .catch(err => {
+      console.log('Error: ', err);
+    });
   }
 
   const handleSignup = () => {
@@ -35,9 +37,14 @@ const Login = ({ navigation }) => {
       .then(resp => {
         if (resp){
           setUserData(true)
-          AsyncStorage.setItem(`userData`, JSON.stringify(resp))
+          firebase.firestore().collection('users').doc(resp.user.uid).set({
+            email: email,
+          })
         }
-    })
+      })
+      .catch(err => {
+        console.log('Error: ', err);
+      });
   }
 
   const authToggle = () => {
@@ -56,7 +63,7 @@ return (
         <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
         <Button title={signup ? `Already have an account?` : `New user?`} onPress={authToggle} />
         <Button title={signup ? 'Signup' : 'Login'} onPress={signup ? handleSignup : handleLogin}/>
-        {userData ? auth() : null}
+        {userData && auth()}
       </View>
     );
 }

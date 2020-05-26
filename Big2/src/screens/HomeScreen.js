@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/firestore'
 
@@ -47,7 +47,9 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="SETTINGS"
-        onPress={() => navigation.navigate('Settings')}
+        onPress={() => Alert.alert("Settings coming soon")}
+        width='45%'
+        margin={10}
       /> 
     </View>
   )

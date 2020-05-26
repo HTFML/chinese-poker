@@ -41,6 +41,10 @@ const App = () => {
           name="Rules"
           component={Rules}
         />
+        <Stack.Screen 
+          name="Settings"
+          component={SettingsScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

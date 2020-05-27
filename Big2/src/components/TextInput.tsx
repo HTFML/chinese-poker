@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TextInput as NativeTextInput, View, StyleSheet, Keyboard, Dimensions } from 'react-native'
 import { colors, isSmallDevice } from '../utils/Theme'
@@ -19,7 +20,7 @@ const TextInput = (props: Props) => {
             <NativeTextInput
                 value={value}
                 placeholder={placeholder}
-                placeholderTextColor={colors.grey}
+                placeholderTextColor={colors.lightGrey}
                 autoCorrect={false}
                 autoCapitalize='none'
                 onChangeText={onChangeText}
@@ -39,9 +40,10 @@ const styles = StyleSheet.create({
         overflow: 'scroll',
         width: width - 50,
         padding: isSmallDevice ? 9 : 13,
-        borderColor: colors.darkGrey,
-        borderWidth: 2,
-        borderRadius: 5,
+        borderColor: colors.white,
+        borderWidth: 1,
+        borderRadius: 20,
+        margin: 10,
     },
     textStyle: {
         fontSize: isSmallDevice ? 14 : 20,

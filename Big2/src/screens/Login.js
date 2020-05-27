@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-// import { styles } from '../styles.js';
 import firebase from '../utils/firebaseConfig';
+import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+// import { styles } from '../styles.js';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import { colors } from '../utils/Theme';

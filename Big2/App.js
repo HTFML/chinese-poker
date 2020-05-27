@@ -1,4 +1,5 @@
 import React from 'react';
+import { decode, encode } from 'base-64'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen.js';
@@ -11,6 +12,8 @@ import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
 import Login from './src/screens/Login.js'
 
+if (!global.btoa) { global.btoa = encode }
+if (!global.atob) { global.atob = decode }
 
 const Stack = createStackNavigator();
 

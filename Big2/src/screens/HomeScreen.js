@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'
 import { View, Text, StyleSheet, Image } from 'react-native';
-import * as firebase from 'firebase';
-import 'firebase/firestore'
+import firebase from '../utils/firebaseConfig';
+import '@firebase/firestore';
 
 const HomeScreen = ({ navigation }) => {
   const [user, setUser] = useState(null)
 
-  const currentUser = () => {
+  const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
-     
+    
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then(resp => {
       if (!resp.exists) {
@@ -25,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.mainContainer}>
-      {!user && currentUser()}
+      {!user && setCurrentUser()}
       <Text style={styles.header}>
         Welcome {user && user.email}
       </Text>

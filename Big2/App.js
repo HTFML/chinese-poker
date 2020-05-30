@@ -10,7 +10,10 @@ import ChangeScreen from './src/screens/ChangeScreen'
 import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
 import Login from './src/screens/Login.js'
+import {decode, encode} from 'base-64'
 
+if (!global.btoa) {  global.btoa = encode }
+if (!global.atob) { global.atob = decode }
 
 const Stack = createStackNavigator();
 

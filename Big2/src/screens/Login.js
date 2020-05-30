@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import { styles } from '../styles.js';
-import firebase from 'firebase';
-import { firebaseConfig } from '../utils/firebaseConfig';
+import firebase from '../utils/firebaseConfig';
 import TextInput from '../components/TextInput';
 
 const Login = ({ navigation }) => {
@@ -12,14 +11,7 @@ const Login = ({ navigation }) => {
   const [userData, setUserData] = useState(null)
   const [signup, setSignup] = useState(false)
 
-  const firebaseInit = () => {
-    if (firebase.apps.length === 0) {
-    return  firebase.initializeApp(firebaseConfig);
-   }
-  }
-
   const handleLogin = () => {
-    firebaseInit()
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){
@@ -32,7 +24,6 @@ const Login = ({ navigation }) => {
   }
 
   const handleSignup = () => {
-    firebaseInit()
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){

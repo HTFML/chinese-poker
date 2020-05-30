@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native'
 import { styles } from '../styles'
 
-const PasswordChangeScreen = () => {
+const ChangeScreen = () => {
   return(
     <View style={styles.center}> 
       <Text>Password change Screen</Text> 
@@ -10,4 +10,4 @@ const PasswordChangeScreen = () => {
   )
 }
 
-export default PasswordChangeScreen
+export default ChangeScreen

@@ -8,7 +8,7 @@ const SettingsScreen = ({ navigation }) => {
     <View style={styles.center}>
       <Button 
         title="Password" 
-        onPress={()=>navigation.navigate("Change Password")}
+        onPress={()=>navigation.navigate("Change Screen")}
       />  
       <Button 
         title="Audio" 

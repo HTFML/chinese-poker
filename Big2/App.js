@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { decode, encode } from 'base-64'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -24,6 +24,8 @@ const App = () => {
 
   const [user, setUser] = useState(null)
 
+  useEffect(() => setCurrentUser, [])
+
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
     
@@ -42,38 +44,46 @@ const App = () => {
 
   return (
     <NavigationContainer>
+      
       <Stack.Navigator
-        initialRouteName="Login"
+        // initialRouteName="Login"
         screenOptions={{ gestureEnabled: false }}
       >
-        <Stack.Screen 
-          name="Login"
-          component={Login} 
-        />
-        <Stack.Screen 
-          name="SignUp"
-          component={SignUp}
-        />
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-        />
-        <Stack.Screen 
-          name="Play"
-          component={PlayScreen}
-        />
-        <Stack.Screen 
-          name="Lobby"
-          component={Lobby}
-        />
-        <Stack.Screen 
-          name="Rules"
-          component={Rules}
-        />
-        <Stack.Screen 
-          name="Settings"
-          component={SettingsScreen}
-        />
+        {user === null ? (
+          <>
+          <Stack.Screen 
+            name="Login"
+            component={Login} 
+          />
+          <Stack.Screen 
+            name="SignUp"
+            component={SignUp}
+          />
+          </>
+        ) : (
+          <>
+          <Stack.Screen 
+            name="Home" 
+            component={HomeScreen} 
+          />
+          <Stack.Screen 
+            name="Play"
+            component={PlayScreen}
+          />
+          <Stack.Screen 
+            name="Lobby"
+            component={Lobby}
+          />
+          <Stack.Screen 
+            name="Rules"
+            component={Rules}
+          />
+          <Stack.Screen 
+            name="Settings"
+            component={SettingsScreen}
+          />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   )

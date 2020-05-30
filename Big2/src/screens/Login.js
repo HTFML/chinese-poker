@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
   const handleLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(resp => {
-        if (resp){
+        if (resp) {
           setUserData(true)
         }
      })
@@ -71,7 +71,7 @@ const Login = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         {/* <Button title={signup ? `Already have an account?` : `New user?`} onPress={authToggle} width={width-50} /> */}
-        {userData && auth()}
+        {/* {userData && auth()} */}
       </View>
     </View>
   );

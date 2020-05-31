@@ -10,7 +10,6 @@ import ChangeScreen from '../screens/ChangeScreen'
 import AudioScreen from '../screens/AudioScreen'
 import EnviornmentChangeScreen from '../screens/EnviornementChangeScreen'
 
-
 const Stack = createStackNavigator()
 
 const PostAuthStack = () => {

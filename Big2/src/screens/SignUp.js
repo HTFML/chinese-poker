@@ -19,18 +19,18 @@ const SignUp = ({ navigation }) => {
   }
 
   const handleSignup = () => {
-    if (password !== confirmPassword) {
+    if (!validateEmail(email)) {
       Alert.alert(
-        "Passwords Need to Match",
+        "Please Enter a Valid Email",
         "Try Again",
         [
           { text: "OK", onPress: () => console.log("OK Pressed") }
         ],
         { cancelable: false }
       );
-    } else if (validateEmail(email)) {
+    } else if (password !== confirmPassword) {
       Alert.alert(
-        "Please Enter a Valid Email",
+        "Passwords Need to Match",
         "Try Again",
         [
           { text: "OK", onPress: () => console.log("OK Pressed") }

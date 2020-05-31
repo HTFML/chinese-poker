@@ -10,8 +10,15 @@ const PreAuthStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode='none'>
-        <Stack.Screen name='Login' component={Login} />
-        <Stack.Screen name='SignUp' component={SignUp} />
+        <Stack.Screen 
+          name='Login' 
+          component={Login}
+          options={{ animationTypeForReplace: 'push' }}
+        />
+        <Stack.Screen 
+          name='SignUp'
+          component={SignUp}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

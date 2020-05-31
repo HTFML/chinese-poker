@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
-// import { styles } from '../styles.js';
 import firebase from '../utils/firebaseConfig';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
@@ -14,7 +13,6 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [userData, setUserData] = useState(null)
-  // const [signup, setSignup] = useState(false)
 
   const handleLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -26,29 +24,6 @@ const Login = ({ navigation }) => {
     .catch(err => {
       console.log('Error: ', err);
     });
-  }
-
-  // const handleSignup = () => {
-  //   firebase.auth().createUserWithEmailAndPassword(email, password)
-  //   .then(resp => {
-  //     if (resp){
-  //       setUserData(true)
-  //       firebase.firestore().collection('users').doc(resp.user.uid).set({
-  //         email: email,
-  //       })
-  //     }
-  //   })
-  //   .catch(err => {
-  //     console.log('Error: ', err);
-  //   });
-  // }
-
-  // const authToggle = () => {
-  //   setSignup(!signup)
-  // }
-
-  const auth = () => {
-    navigation.navigate('Home')
   }
 
   return (
@@ -63,15 +38,12 @@ const Login = ({ navigation }) => {
       <View style={styles.login}>
         <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
         <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
-        {/* <Button title={signup ? 'SIGN UP' : 'LOG IN'} onPress={signup ? handleSignup : handleLogin} width={width-50} /> */}
         <Button title='LOG IN' onPress={handleLogin} width={width-50} />
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
           <Text>Don't have an account?
             <Text style={{ fontWeight: 'bold'}}> Sign Up</Text> 
           </Text>
         </TouchableOpacity>
-        {/* <Button title={signup ? `Already have an account?` : `New user?`} onPress={authToggle} width={width-50} /> */}
-        {/* {userData && auth()} */}
       </View>
     </View>
   );

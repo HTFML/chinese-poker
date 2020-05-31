@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 
 const HomeScreen = ({ navigation }) => {
+
   const [user, setUser] = useState(null)
 
   const setCurrentUser = () => {
@@ -21,6 +22,10 @@ const HomeScreen = ({ navigation }) => {
     .catch(err => {
       console.log('Error: ', err);
     });
+  }
+
+  const handleSignOut = () => {
+    firebase.auth().signOut()
   }
 
   return (
@@ -50,7 +55,13 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => Alert.alert("Settings coming soon")}
         width='45%'
         margin={10}
-      /> 
+      />
+      <Button
+        title='SIGN OUT'
+        onPress={handleSignOut}
+        width='45%'
+        margin={10}
+      />
     </View>
   )
 }

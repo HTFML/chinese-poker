@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import firebase from './src/utils/firebaseConfig';
+import '@firebase/firestore';
 import { decode, encode } from 'base-64'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,8 +14,8 @@ import AudioScreen from './src/screens/AudioScreen'
 import EnviornmentChangeScreen from './src/screens/EnviornementChangeScreen'
 import Login from './src/screens/Login'
 import SignUp from './src/screens/SignUp'
-import firebase from './src/utils/firebaseConfig';
-import '@firebase/firestore';
+import PostAuthStack from './src/navigation/PostAuthStack'
+import PreAuthStack from './src/navigation/PreAuthStack'
 
 if (!global.btoa) { global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -24,7 +26,12 @@ const App = () => {
 
   const [user, setUser] = useState(null)
 
-  useEffect(() => setCurrentUser, [])
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user !== null) setUser(user)
+      else setUser(null)
+    })
+  })
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
@@ -42,50 +49,52 @@ const App = () => {
     });
   }
 
-  return (
-    <NavigationContainer>
-      
-      <Stack.Navigator
-        // initialRouteName="Login"
-        screenOptions={{ gestureEnabled: false }}
-      >
-        {user === null ? (
-          <>
-          <Stack.Screen 
-            name="Login"
-            component={Login} 
-          />
-          <Stack.Screen 
-            name="SignUp"
-            component={SignUp}
-          />
-          </>
-        ) : (
-          <>
-          <Stack.Screen 
-            name="Home" 
-            component={HomeScreen} 
-          />
-          <Stack.Screen 
-            name="Play"
-            component={PlayScreen}
-          />
-          <Stack.Screen 
-            name="Lobby"
-            component={Lobby}
-          />
-          <Stack.Screen 
-            name="Rules"
-            component={Rules}
-          />
-          <Stack.Screen 
-            name="Settings"
-            component={SettingsScreen}
-          />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+  return user ? (
+    <PostAuthStack />
+  ) : (
+    // <NavigationContainer>
+    //   <Stack.Navigator
+    //     // initialRouteName="Login"
+    //     screenOptions={{ gestureEnabled: false }}
+    //   >
+    //     {user === null ? (
+    //       <>
+    //       <Stack.Screen 
+    //         name="Login"
+    //         component={Login} 
+    //       />
+    //       <Stack.Screen 
+    //         name="SignUp"
+    //         component={SignUp}
+    //       />
+    //       </>
+    //     ) : (
+    //       <>
+    //       <Stack.Screen 
+    //         name="Home" 
+    //         component={HomeScreen} 
+    //       />
+    //       <Stack.Screen 
+    //         name="Play"
+    //         component={PlayScreen}
+    //       />
+    //       <Stack.Screen 
+    //         name="Lobby"
+    //         component={Lobby}
+    //       />
+    //       <Stack.Screen 
+    //         name="Rules"
+    //         component={Rules}
+    //       />
+    //       <Stack.Screen 
+    //         name="Settings"
+    //         component={SettingsScreen}
+    //       />
+    //       </>
+    //     )}
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+    <PreAuthStack />
   )
 }
 

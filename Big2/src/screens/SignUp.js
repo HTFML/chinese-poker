@@ -5,7 +5,6 @@ import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import { colors } from '../utils/Theme';
 
-
 const width = Dimensions.get('window').width
 
 const SignUp = ({ navigation }) => {
@@ -14,6 +13,10 @@ const SignUp = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [userData, setUserData] = useState(null)
+
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
 
   const handleSignup = () => {
     if (password !== confirmPassword) {
@@ -25,7 +28,7 @@ const SignUp = ({ navigation }) => {
         ],
         { cancelable: false }
       );
-    } else if (email === '') {
+    } else if (validateEmail(email)) {
       Alert.alert(
         "Please Enter a Valid Email",
         "Try Again",

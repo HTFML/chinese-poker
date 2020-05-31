@@ -12,15 +12,9 @@ const Login = ({ navigation }) => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [userData, setUserData] = useState(null)
 
   const handleLogin = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(resp => {
-        if (resp) {
-          setUserData(true)
-        }
-     })
     .catch(err => {
       console.log('Error: ', err);
     });

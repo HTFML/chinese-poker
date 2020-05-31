@@ -28,6 +28,8 @@ const HomeScreen = ({ navigation }) => {
     firebase.auth().signOut()
   }
 
+  console.log(user)
+
   return (
     <View style={styles.mainContainer}>
       {!user && setCurrentUser()}

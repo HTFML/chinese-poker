@@ -12,7 +12,6 @@ const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [userData, setUserData] = useState(null)
 
   const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -24,7 +23,7 @@ const SignUp = ({ navigation }) => {
         "Please Enter a Valid Email",
         "Try Again",
         [
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "OK" }
         ],
         { cancelable: false }
       );
@@ -33,7 +32,7 @@ const SignUp = ({ navigation }) => {
         "Passwords Need to Match",
         "Try Again",
         [
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "OK" }
         ],
         { cancelable: false }
       );
@@ -41,7 +40,6 @@ const SignUp = ({ navigation }) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){
-          setUserData(true)
           firebase.firestore().collection('users').doc(resp.user.uid).set({
             email: email,
           })
@@ -51,10 +49,6 @@ const SignUp = ({ navigation }) => {
         console.log('Error: ', err);
       });
     }
-  }
-
-  const auth = () => {
-    navigation.navigate('Home')
   }
 
   return (
@@ -76,7 +70,6 @@ const SignUp = ({ navigation }) => {
               <Text style={{ fontWeight: 'bold'}}> Sign In</Text> 
           </Text>
         </TouchableOpacity>
-        {userData && auth()}
       </View>
     </View>
   );

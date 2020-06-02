@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import { useFonts } from '@use-expo/font'
 
 interface Props {
     title: string;
@@ -13,8 +14,13 @@ interface Props {
 
 const Button = (props: Props) => {
 
+  let [fonts] = useFonts({
+    'Chelsea-Market': require('../../assets/fonts/Chelsea-Market.ttf'),
+  })
+
   const { title, onPress, backgroundColor, color, width, height, margin } = props;
 
+  if (!fonts) return null
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -29,7 +35,6 @@ const Button = (props: Props) => {
       <Text style={{
         ...styles.text,
         color,
-        
       }}>
         {title}
       </Text>
@@ -54,9 +59,9 @@ const styles = StyleSheet.create({
     },
     text: {
       alignItems: 'center', 
-      fontWeight: 'bold',
       letterSpacing: 1.1,
-      fontSize: 16
+      fontSize: 16,
+      fontFamily: 'Chelsea-Market',
     }
 })
 
@@ -67,6 +72,5 @@ Button.defaultProps = {
   height: 45,
   margin: 5,
 }
-
 
 export default Button;

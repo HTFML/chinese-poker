@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
+import { useFonts } from '@use-expo/font'
 
 const HomeScreen = ({ navigation }) => {
+
   const [user, setUser] = useState(null)
+
+  let [fonts] = useFonts({
+    'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
+  })
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
@@ -23,6 +29,11 @@ const HomeScreen = ({ navigation }) => {
     });
   }
 
+  const handleSignOut = () => {
+    firebase.auth().signOut()
+  }
+
+  if (!fonts) return null
   return (
     <View style={styles.mainContainer}>
       {!user && setCurrentUser()}
@@ -50,7 +61,13 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => Alert.alert("Settings coming soon")}
         width='45%'
         margin={10}
-      /> 
+      />
+      <Button
+        title='SIGN OUT'
+        onPress={handleSignOut}
+        width='45%'
+        margin={10}
+      />
     </View>
   )
 }
@@ -64,6 +81,8 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
+    fontFamily: 'Dosis',
+    margin: 15,
   },
   img: {
     width: 100,

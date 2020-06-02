@@ -13,6 +13,7 @@ const Login = ({ navigation }) => {
   
   let [fonts] = useFonts({
     'Chelsea-Market': require('../../assets/fonts/Chelsea-Market.ttf'),
+    'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
   })
 
   const [email, setEmail] = useState('')
@@ -42,15 +43,14 @@ const Login = ({ navigation }) => {
           <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
           <Button title='LOG IN' onPress={handleLogin} width={width-50} />
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text>Don't have an account?
-              <Text style={{ fontWeight: 'bold'}}> Sign Up</Text> 
+            <Text style={{ fontFamily: 'Dosis' }}>Don't have an account?
+              <Text style={{ fontWeight: 'bold' }}> Sign Up</Text> 
             </Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.yellow,
-    fontSize: 36,
+    fontSize: 42,
     fontFamily: 'Chelsea-Market'
   },
   img: {

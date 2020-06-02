@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { TextInput as NativeTextInput, View, StyleSheet, Keyboard, Dimensions } from 'react-native'
 import { colors, isSmallDevice } from '../utils/Theme'
+import { useFonts } from '@use-expo/font'
 
 const { width } = Dimensions.get('window')
 
@@ -14,21 +14,29 @@ interface Props {
 }
 
 const TextInput = (props: Props) => {
+
+    let [fonts] = useFonts({
+        'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
+    })
+    
     const { width, value, onChangeText, placeholder, textInputProps } = props;
-    return (
-        <View style={styles.container}>
-            <NativeTextInput
-                value={value}
-                placeholder={placeholder}
-                placeholderTextColor={colors.lightGrey}
-                autoCorrect={false}
-                autoCapitalize='none'
-                onChangeText={onChangeText}
-                style={styles.textStyle}
-                {...textInputProps}
-            />
-        </View>
-    );
+    if (!fonts) return null
+    else {
+        return (
+            <View style={styles.container}>
+                <NativeTextInput
+                    value={value}
+                    placeholder={placeholder}
+                    placeholderTextColor={colors.lightGrey}
+                    autoCorrect={false}
+                    autoCapitalize='none'
+                    onChangeText={onChangeText}
+                    style={styles.textStyle}
+                    {...textInputProps}
+                />
+            </View>
+        );
+    }
 };
 
 TextInput.defaultProps = {
@@ -50,7 +58,8 @@ const styles = StyleSheet.create({
         color: "white",
         width: width - 50,
         maxHeight: isSmallDevice ? 35 : 50,
-        marginVertical: isSmallDevice ? 3 : 4
+        marginVertical: isSmallDevice ? 3 : 4,
+        fontFamily: 'Dosis'
     }
 })
 

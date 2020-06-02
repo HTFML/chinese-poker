@@ -3,10 +3,15 @@ import Button from '../components/Button'
 import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
+import { useFonts } from '@use-expo/font'
 
 const HomeScreen = ({ navigation }) => {
 
   const [user, setUser] = useState(null)
+
+  let [fonts] = useFonts({
+    'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
+  })
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
@@ -28,8 +33,7 @@ const HomeScreen = ({ navigation }) => {
     firebase.auth().signOut()
   }
 
-  console.log(user)
-
+  if (!fonts) return null
   return (
     <View style={styles.mainContainer}>
       {!user && setCurrentUser()}
@@ -77,6 +81,8 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
+    fontFamily: 'Dosis',
+    margin: 15,
   },
   img: {
     width: 100,

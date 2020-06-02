@@ -4,10 +4,15 @@ import firebase from '../utils/firebaseConfig';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import { colors } from '../utils/Theme';
+import { useFonts } from '@use-expo/font'
 
 const width = Dimensions.get('window').width
 
 const SignUp = ({ navigation }) => {
+
+  let [fonts] = useFonts({
+    'Chelsea-Market': require('../../assets/fonts/Chelsea-Market.ttf'),
+  })
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -50,7 +55,7 @@ const SignUp = ({ navigation }) => {
       });
     }
   }
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -58,7 +63,7 @@ const SignUp = ({ navigation }) => {
           source={require('../../assets/cards.jpg')} 
           style={styles.img}
         />
-        <Text style={{color: colors.yellow, fontSize: 36, fontWeight: 'bold'}}>Big 2</Text>
+        <Text style={styles.title}>Big 2</Text>
       </View>
       <View style={styles.signup}>
         <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
@@ -66,7 +71,7 @@ const SignUp = ({ navigation }) => {
         <TextInput placeholder="Confirm Password" value={confirmPassword} onChangeText={text => setConfirmPassword(text)} textInputProps={{ secureTextEntry: true }} />
         <Button title='SIGN UP' onPress={handleSignup} width={width-50} />
         <TouchableOpacity onPress={() => navigation.popToTop()}>
-          <Text>Already have an account?
+          <Text style={{ fontFamily: 'Dosis' }}>Already have an account?
               <Text style={{ fontWeight: 'bold'}}> Sign In</Text> 
           </Text>
         </TouchableOpacity>
@@ -85,6 +90,11 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     margin: 20
+  },
+  title: {
+    color: colors.yellow,
+    fontSize: 42,
+    fontFamily: 'Chelsea-Market'
   },
   img: {
     width: 100,

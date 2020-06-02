@@ -5,7 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
-		
+
 /* Begin PBXBuildFile section */
 		009BD540691E430AADC5C317 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67033F2E881B478E883051C8 /* SimpleLineIcons.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -61,6 +61,8 @@
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		ED56324DDB554E998F6AA494 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39A78481667248EF9BC03F83 /* Entypo.ttf */; };
+		A3A1A8A9AB3C4CF1B9093F0A /* ChelseaMarket-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 275C67D285E34534A33E98F4 /* ChelseaMarket-Regular.ttf */; };
+		E1FDBAFD568B49429EF4E534 /* Chelsea Market.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C5CEB0CB3544E97AE1C2487 /* Chelsea Market.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,6 +399,8 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EE55F2A97EAD40E592AE688C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		275C67D285E34534A33E98F4 /* ChelseaMarket-Regular.ttf */ = {isa = PBXFileReference; name = "ChelseaMarket-Regular.ttf"; path = "../assets/fonts/ChelseaMarket-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7C5CEB0CB3544E97AE1C2487 /* Chelsea Market.ttf */ = {isa = PBXFileReference; name = "Chelsea Market.ttf"; path = "../assets/fonts/Chelsea Market.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -708,6 +712,8 @@
 				63511EB4232E4FBBA2904212 /* Octicons.ttf */,
 				67033F2E881B478E883051C8 /* SimpleLineIcons.ttf */,
 				DD7795F0BF794B7E9E418C0B /* Zocial.ttf */,
+				275C67D285E34534A33E98F4 /* ChelseaMarket-Regular.ttf */,
+				7C5CEB0CB3544E97AE1C2487 /* Chelsea Market.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -1181,6 +1187,8 @@
 				C43E8471582747798FAE4B32 /* Octicons.ttf in Resources */,
 				009BD540691E430AADC5C317 /* SimpleLineIcons.ttf in Resources */,
 				E90D68E4FDFF4C80A38769A6 /* Zocial.ttf in Resources */,
+				A3A1A8A9AB3C4CF1B9093F0A /* ChelseaMarket-Regular.ttf in Resources */,
+				E1FDBAFD568B49429EF4E534 /* Chelsea Market.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

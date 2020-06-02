@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         fontSize: isSmallDevice ? 14 : 20,
-        color: "black",
+        color: "white",
         width: width - 50,
         maxHeight: isSmallDevice ? 35 : 50,
         marginVertical: isSmallDevice ? 3 : 4

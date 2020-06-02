@@ -56,6 +56,7 @@ const SignUp = ({ navigation }) => {
     }
   }
   
+  if (!fonts) return null
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>

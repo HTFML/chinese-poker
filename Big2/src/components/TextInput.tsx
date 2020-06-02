@@ -33,6 +33,7 @@ const TextInput = (props: Props) => {
                     onChangeText={onChangeText}
                     style={styles.textStyle}
                     {...textInputProps}
+                    inlineImageLeft='search_icon'
                 />
             </View>
         );
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     textStyle: {
         fontSize: isSmallDevice ? 14 : 20,
         color: "white",
-        width: width - 50,
+        maxWidth: width - 50,
         maxHeight: isSmallDevice ? 35 : 50,
         marginVertical: isSmallDevice ? 3 : 4,
         fontFamily: 'Dosis'

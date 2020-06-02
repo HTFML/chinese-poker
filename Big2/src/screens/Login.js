@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, TextInput } from 'react-native';
 import firebase from '../utils/firebaseConfig';
-import TextInput from '../components/TextInput';
+import TI from '../components/TextInput';
 import Button from '../components/Button';
 import { colors } from '../utils/Theme';
 import { useFonts } from '@use-expo/font'
@@ -39,8 +39,8 @@ const Login = ({ navigation }) => {
           <Text style={styles.title}>BIG 2</Text>
         </View>
         <View style={styles.login}>
-          <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
-          <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
+          <TI placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
+          <TI placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
           <Button title='LOG IN' onPress={handleLogin} width={width-50} />
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
             <Text style={{ fontFamily: 'Dosis' }}>Don't have an account?

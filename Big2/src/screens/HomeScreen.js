@@ -58,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="SETTINGS"
-        onPress={() => Alert.alert("Settings coming soon")}
+        onPress={() => navigation.navigate('Settings', { user: user})}
         width='45%'
         margin={10}
       />

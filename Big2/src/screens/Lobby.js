@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RedButton from '../components/Button'
 import {
   View,
@@ -9,15 +9,11 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import UserCard from '../components/UserCard';
-
+import firebase from '../utils/firebaseConfig';
+import '@firebase/firestore';
 const Lobby = ({ navigation }) => {
   const [isModalVisible, setModal] = useState(false);
-  const [userName, setUserName] = useState("");
-
-  const user = {
-    username: 'Aibek',
-    avatar: 'https://i1.pngguru.com/preview/137/834/449/cartoon-cartoon-character-avatar-drawing-film-ecommerce-facial-expression-png-clipart.jpg' 
-  }
+  const [user, setUser] = useState({})
 
   const handleNo = () => {
     Alert.alert("Sorry", "You must be 21 or older to play!", [
@@ -31,14 +27,34 @@ const Lobby = ({ navigation }) => {
     ]);
   };
 
+  useEffect(() => {
+    setCurrentUser()
+  })
+
+  const setCurrentUser = () => {
+    let currentUser = firebase.auth().currentUser
+    
+    firebase.firestore().collection('users').doc(currentUser.uid).get()
+    .then(resp => {
+      if (!resp.exists) {
+        console.log('No such User!');
+      } else {
+        setUser(resp.data())
+      }
+    })
+    .catch(err => {
+      console.log('Error: ', err);
+    });
+  }
+
   const handleYes = () => {
     setModal(false)
-    navigation.navigate('Play', { userName: userName })
+    navigation.navigate('Play')
   }
 
   return (
     <View style={styles.container}>
-      <UserCard username={user.username} avatar={user.avatar}/>
+      <UserCard username={user.email} />
       <UserCard/>
       <UserCard/>
       <UserCard/>

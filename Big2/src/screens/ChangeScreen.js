@@ -10,6 +10,7 @@ const width = Dimensions.get('window').width
 const ChangeScreen = ({ route, navigation }) => {
 
   const { title } = route.params
+  const currentUser = firebase.auth().currentUser
   const [ user, setUser ] = useState(null)
   const [ newUserName, setNewUsername ] = useState("")
   const [ originalPW, setOrginialPW ] = useState("")
@@ -21,16 +22,39 @@ const ChangeScreen = ({ route, navigation }) => {
   const changeUsername = () => {
     let currentUser = firebase.auth().currentUser
     firebase.firestore().collection('users').doc(currentUser.uid).get()
-      .then(resp => { setUser(resp.data()) })
-      .catch(err => { console.log('Error: ', err) })
+    .then(resp => { 
+      setUser(resp.data());
+      console.log("fetch:" + user.email)
+      console.log("fetch:" + user.username)
+    })
+    .catch(err => { console.log('Error: ', err) })
     
-    console.log(currentUser.username, user.username)
-    console.log(currentUser.email, user.email)
+    console.log("Current User:" + currentUser.username)
+    console.log("Current User:" + currentUser.email)
+    console.log("Hooks User:" + user.username)
+    console.log("Hooks User:" + user.email)
   }
 
   const changePassword = () => {
-    let currentUser = firebase.auth().currentUser
-    currentUser.updatePassword("password")
+    let credential = firebase.auth.EmailAuthProvider.credential(
+      currentUser.email, 
+      originalPW
+    )
+    currentUser.reauthenticateWithCredential(credential)
+    .then(() => {
+      console.log("ReAuthenticated")
+      matchPasswords()
+    })
+    .catch(() => {Alert.alert("Please enter your original password correctly")})
+  }
+
+  const matchPasswords = () => {
+    if (newPW===confirmPW){
+      console.log("Same Passwords")
+      currentUser.updatePassword(newPW)
+      .then(() => {console.log("Password update successful!")})
+      .catch(error => {console.log("An error occurred when changing passwords:", error)})
+    } else return console.log("Passwords don't match")
   }
 
   if (title=="Change Password") {

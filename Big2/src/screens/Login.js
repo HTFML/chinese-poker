@@ -41,9 +41,9 @@ const Login = ({ navigation }) => {
         <View style={styles.login}>
           <TI placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
           <TI placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
-          <Button title='LOG IN' onPress={handleLogin} width={width-50} />
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-            <Text style={{ fontFamily: 'Dosis' }}>Don't have an account?
+          <Button  title='LOG IN' onPress={handleLogin} width={width-50} />
+          <TouchableOpacity style={{ margin: 15}} onPress={() => navigation.navigate('SignUp')}>
+            <Text style={{ fontFamily: 'Dosis', textDecorationLine: 'underline'}}>Don't have an account?
               <Text style={{ fontWeight: 'bold' }}> Sign Up</Text> 
             </Text>
           </TouchableOpacity>

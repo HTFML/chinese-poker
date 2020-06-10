@@ -52,9 +52,12 @@ const ChangeScreen = ({ route, navigation }) => {
     if (newPW===confirmPW){
       console.log("Same Passwords")
       currentUser.updatePassword(newPW)
-      .then(() => {console.log("Password update successful!")})
-      .catch(error => {console.log("An error occurred when changing passwords:", error)})
-    } else return console.log("Passwords don't match")
+      .then(() => 
+        {Alert.alert("Password update successful!")
+        navigation.navigate('Settings')
+      })
+      .catch(error => {Alert.alert("An error occurred when changing passwords:", error)})
+    } else return Alert.alert("Passwords entered do not match")
   }
 
   if (title=="Change Password") {
@@ -66,7 +69,7 @@ const ChangeScreen = ({ route, navigation }) => {
           onChangeText={text=>setOrginialPW(text)}
           value={originalPW}
           autoCapitalize="none"
-          secureTextEntry={true}
+          textInputProps={{ secureTextEntry: true }}
         />
         <TextInput
           style={styles.input}
@@ -74,7 +77,7 @@ const ChangeScreen = ({ route, navigation }) => {
           onChangeText={text=>setNewPW(text)}
           value={newPW}
           autoCapitalize="none"
-          secureTextEntry={true}
+          textInputProps={{ secureTextEntry: true }}          
         />
         <TextInput
           style={styles.input}
@@ -82,7 +85,7 @@ const ChangeScreen = ({ route, navigation }) => {
           onChangeText={text=>setConfirmPW(text)}
           value={confirmPW}
           autoCapitalize="none"
-          secureTextEntry={true}
+          textInputProps={{ secureTextEntry: true }}
         />
         <Button
           title="SUBMIT" 

@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.mainContainer}>
       {!user && setCurrentUser()}
       <Text style={styles.header}>
-        Welcome {user && user.email}
+        Welcome {user.username}
       </Text>
       <Image 
         source={require('../../assets/cards.jpg')} 

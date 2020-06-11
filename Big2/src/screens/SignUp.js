@@ -46,9 +46,12 @@ const SignUp = ({ navigation }) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){
+          let currentUser = firebase.auth().currentUser
+          currentUser.updateProfile({
+            displayName: username
+          })
           firebase.firestore().collection('users').doc(resp.user.uid).set({
-            email: email,
-            username: username
+            email: email
           })
         }
       })

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button'
 import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import firebase from '../utils/firebaseConfig';
@@ -9,25 +9,30 @@ const HomeScreen = ({ navigation }) => {
 
   const [user, setUser] = useState(null)
 
+  useEffect(()=>{
+    let currentUser = firebase.auth().currentUser
+    console.log(currentUser)
+    setUser(currentUser)
+  }, [])
+
   let [fonts] = useFonts({
     'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
   })
 
-  const setCurrentUser = () => {
-    let currentUser = firebase.auth().currentUser
-    
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then(resp => {
-      if (!resp.exists) {
-        console.log('No such User!');
-      } else {
-        setUser(resp.data())
-      }
-    })
-    .catch(err => {
-      console.log('Error: ', err);
-    });
-  }
+  // const setCurrentUser = () => {
+  //   console.log(currentUser)
+  //   firebase.firestore().collection('users').doc(currentUser.uid).get()
+  //   .then(resp => {
+  //     if (!resp.exists) {
+  //       console.log('No such User!');
+  //     } else {
+  //       setUser(resp.data())
+  //     }
+  //   })
+  //   .catch(err => {
+  //     console.log('Error: ', err);
+  //   });
+  // }
 
   const handleSignOut = () => {
     firebase.auth().signOut()
@@ -36,9 +41,10 @@ const HomeScreen = ({ navigation }) => {
   if (!fonts) return null
   return (
     <View style={styles.mainContainer}>
-      {!user && setCurrentUser()}
+      {/* {!user && setCurrentUser()} */}
       <Text style={styles.header}>
-        Welcome {user && user.username}
+        {/* Welcome {user && user.displayName}*/}
+        Welcome {user.displayName}
       </Text>
       <Image 
         source={require('../../assets/cards.jpg')} 
@@ -58,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="SETTINGS"
-        onPress={() => Alert.alert("Settings coming soon")}
+        onPress={() => console.log(user.username)}
         width='45%'
         margin={10}
       />

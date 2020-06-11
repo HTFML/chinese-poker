@@ -3,16 +3,13 @@ import { View, Alert, Text } from 'react-native';
 import Button from '../components/Button'
 import { styles } from '../styles'
  
-const SettingsScreen = ({ route, navigation }) => {
+const SettingsScreen = ({ navigation }) => {
 
-  const { user } = route.params
-  
   return(
     <View style={styles.center}>
-      <Text>{ user.username}</Text>
       <Button 
         title="USER NAME" 
-        onPress={()=>navigation.navigate("Change Screen", {title: "Change Username", user: user})}
+        onPress={()=>navigation.navigate("Change Screen", {title: "Change Username"})}
       /> 
       <Button 
         title="PASSWORD" 

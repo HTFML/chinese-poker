@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native'
+import { View, StyleSheet, Dimensions, Alert } from 'react-native'
 import Button from '../components/Button'
 import TextInput from '../components/TextInput'
 import { colors } from '../utils/Theme';
@@ -12,35 +12,21 @@ const ChangeScreen = ({ route, navigation }) => {
 
   const { title } = route.params
   const currentUser = firebase.auth().currentUser
-  const [ user, setUser ] = useState(null)
   const [ newUserName, setNewUsername ] = useState("")
   const [ originalPW, setOrginialPW ] = useState("")
   const [ newPW, setNewPW ] = useState("")
   const [ confirmPW, setConfirmPW ] = useState("")
-  const [ userNames, setUserNames ] = useState([])
 
   useLayoutEffect(() => {navigation.setOptions({title: title})}, [navigation, title])
 
-  const getUserNames = () => {
-    let usersRef = firebase.firestore().collection('users')
-    let allUsers = usersRef.get()
-      .then(resp => {
-        resp.forEach(doc => {
-          setUserNames(doc.data().username)
-        })
-      })
-      .catch(err => {console.log('Error getting users', err)});
-  }
-
   const changeUsername = () => {
-    getUserNames()
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then(resp => { 
-      setUser(resp.data());
-    })
-    .catch(err => { console.log('Error: ', err) })
-    // currentUser.updateProfile({username:"Mitch"})
-  }
+    if(newUserName===""){
+      Alert.alert("Field must not be empty")
+    } else {
+    currentUser.updateProfile({displayName: newUserName})
+    Alert.alert("Username Successfully Changed!")
+    navigation.navigate("Settings")
+  }}
 
   const changePassword = () => {
     if(originalPW === "" || newPW === "" || confirmPW === ""){

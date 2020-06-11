@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native'
 import Button from '../components/Button'
 import TextInput from '../components/TextInput'
+import { colors } from '../utils/Theme';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 
@@ -36,19 +37,15 @@ const ChangeScreen = ({ route, navigation }) => {
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then(resp => { 
       setUser(resp.data());
-      console.log("fetch:" + resp.data().email)
-      console.log("fetch:" + resp.data().username)
     })
     .catch(err => { console.log('Error: ', err) })
-    // Errors out the 1st time though
-    console.log("Hooks User:" + user.username)
-    console.log("Hooks User:" + user.email)
-
-   
-
+    // currentUser.updateProfile({username:"Mitch"})
   }
 
   const changePassword = () => {
+    if(originalPW === "" || newPW === "" || confirmPW === ""){
+      Alert.alert("Please don't leave any fields blank")
+    } else {
     let credential = firebase.auth.EmailAuthProvider.credential(
       currentUser.email, 
       originalPW
@@ -59,6 +56,7 @@ const ChangeScreen = ({ route, navigation }) => {
       matchPasswords()
     })
     .catch(() => {Alert.alert("Please enter your original password correctly")})
+    }
   }
 
   const matchPasswords = () => {
@@ -119,7 +117,7 @@ const ChangeScreen = ({ route, navigation }) => {
         />
         <Button
           title="SUBMIT" 
-          onPress={()=>getUserNames()}
+          onPress={()=>changeUsername()}
           width={width-50}
           margin={15}
         />
@@ -130,8 +128,9 @@ const ChangeScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 23,
+    flex: 1,
     alignContent: 'center',
+    backgroundColor: colors.red,
     justifyContent: 'center'
   }
 })

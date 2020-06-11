@@ -16,23 +16,36 @@ const ChangeScreen = ({ route, navigation }) => {
   const [ originalPW, setOrginialPW ] = useState("")
   const [ newPW, setNewPW ] = useState("")
   const [ confirmPW, setConfirmPW ] = useState("")
+  const [ userNames, setUserNames ] = useState([])
 
   useLayoutEffect(() => {navigation.setOptions({title: title})}, [navigation, title])
 
+  const getUserNames = () => {
+    let usersRef = firebase.firestore().collection('users')
+    let allUsers = usersRef.get()
+      .then(resp => {
+        resp.forEach(doc => {
+          setUserNames(doc.data().username)
+        })
+      })
+      .catch(err => {console.log('Error getting users', err)});
+  }
+
   const changeUsername = () => {
-    let currentUser = firebase.auth().currentUser
+    getUserNames()
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then(resp => { 
       setUser(resp.data());
-      console.log("fetch:" + user.email)
-      console.log("fetch:" + user.username)
+      console.log("fetch:" + resp.data().email)
+      console.log("fetch:" + resp.data().username)
     })
     .catch(err => { console.log('Error: ', err) })
-    
-    console.log("Current User:" + currentUser.username)
-    console.log("Current User:" + currentUser.email)
+    // Errors out the 1st time though
     console.log("Hooks User:" + user.username)
     console.log("Hooks User:" + user.email)
+
+   
+
   }
 
   const changePassword = () => {
@@ -93,8 +106,6 @@ const ChangeScreen = ({ route, navigation }) => {
           width={width-50}
           margin={15}
         />
-        {/* <Text>{"\n"}Original pw: {password}</Text>
-        <Text>New pw: {text}</Text>  */}
       </View>
     )
   } else if (title=="Change Username"){
@@ -108,7 +119,7 @@ const ChangeScreen = ({ route, navigation }) => {
         />
         <Button
           title="SUBMIT" 
-          onPress={()=>changeUsername()}
+          onPress={()=>getUserNames()}
           width={width-50}
           margin={15}
         />

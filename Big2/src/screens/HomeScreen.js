@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 import { useFonts } from '@use-expo/font'
 
 const HomeScreen = ({ navigation }) => {
-
-  const [user, setUser] = useState(null)
+  const [userName, setUserName] = useState(null)
 
   useEffect(() => {
     let currentUser = firebase.auth().currentUser
@@ -19,21 +19,12 @@ const HomeScreen = ({ navigation }) => {
     'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
   })
 
-  // const setCurrentUser = () => {
-  //   console.log(currentUser)
-  //   firebase.firestore().collection('users').doc(currentUser.uid).get()
-  //   .then(resp => {
-  //     if (!resp.exists) {
-  //       console.log('No such User!');
-  //     } else {
-  //       setUser(resp.data())
-  //     }
-  //   })
-  //   .catch(err => {
-  //     console.log('Error: ', err);
-  //   });
-  // }
-
+  useFocusEffect(() => {
+    let currentUser = firebase.auth().currentUser
+    console.log(currentUser.displayName);    
+    setUserName(currentUser.displayName)
+  })
+ 
   const handleSignOut = () => {
     firebase.auth().signOut()
   }
@@ -42,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
       <Text style={styles.header}>
-        Welcome {user.displayName}
+        Welcome {userName}
       </Text>
       <Image 
         source={require('../../assets/cards.jpg')} 
@@ -62,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="SETTINGS"
-        onPress={() => console.log(user.username)}
+        onPress={() => navigation.navigate('Settings')}
         width='45%'
         margin={10}
       />

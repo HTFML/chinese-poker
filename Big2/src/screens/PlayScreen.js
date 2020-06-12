@@ -30,11 +30,18 @@ const PlayScreen = ({ route }) => {
         <DropSite
           onDrop={onDrop}
           onDragOverAllowDrop={onDragOverAllowDrop} />
-        <Card
-          title='Card title'
-          onDragStart={onDragStart} 
-          onDragOverForbideDrop={onDragOverForbideDrop} 
-          />
+        <div style={{display: 'flex'}}>
+          <Card
+            title='Card 1'
+            onDragStart={onDragStart} 
+            onDragOverForbideDrop={onDragOverForbideDrop} 
+            />
+          <Card
+            title='Card 2'
+            onDragStart={onDragStart} 
+            onDragOverForbideDrop={onDragOverForbideDrop} 
+            />
+        </div>
       </View>
     </ImageBackground>
   )

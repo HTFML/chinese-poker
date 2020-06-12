@@ -11,9 +11,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 200,
         height: 200,
-        right: 100,
-        top: 10,
-        backgroundColor: '#9E9E9E',
+        right: 50,
+        top: -50,
+        backgroundImage: `url(https://cdn.shopify.com/s/files/1/1200/3916/products/61f_pgf_5L._SL1500_grande.jpg?v=1560189702)`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
     }
   })
 

@@ -9,13 +9,13 @@ interface Props {
 
 const styles = StyleSheet.create({
     draggable: {
+      position: 'fixed',
+      backgroundImage: `url(https://lh3.googleusercontent.com/proxy/dS34eS7y1IklbDuZLnj6R75860ofvNSJoUkF6pJIBLTpMM247rN_QljsVed4lpJQXl6UA3CC_JswhiZFYWvJ9KySd2syF-4)`,
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      paddingLeft: 20,
+      minHeight: 200,
       width: 100,
-      height: 100,
-      backgroundColor: 'yellow',
-      shadowOffset: {
-        width: -10,
-        height: 10,
-      }
     }})
 
 const Card = (props: Props) => {

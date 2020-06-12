@@ -9,7 +9,7 @@ const HomeScreen = ({ navigation }) => {
 
   const [user, setUser] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     let currentUser = firebase.auth().currentUser
     console.log(currentUser)
     setUser(currentUser)
@@ -41,9 +41,7 @@ const HomeScreen = ({ navigation }) => {
   if (!fonts) return null
   return (
     <View style={styles.mainContainer}>
-      {/* {!user && setCurrentUser()} */}
       <Text style={styles.header}>
-        {/* Welcome {user && user.displayName}*/}
         Welcome {user.displayName}
       </Text>
       <Image 

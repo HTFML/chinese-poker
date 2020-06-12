@@ -16,26 +16,30 @@ const PostAuthStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-          <Stack.Screen 
-            name="Home" 
-            component={HomeScreen} 
-          />
-          <Stack.Screen 
-            name="Play"
-            component={PlayScreen}
-          />
-          <Stack.Screen 
-            name="Lobby"
-            component={Lobby}
-          />
-          <Stack.Screen 
-            name="Rules"
-            component={Rules}
-          />
-          <Stack.Screen 
-            name="Settings"
-            component={SettingsScreen}
-          />
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+        />
+        <Stack.Screen 
+          name="Play"
+          component={PlayScreen}
+        />
+        <Stack.Screen 
+          name="Lobby"
+          component={Lobby}
+        />
+        <Stack.Screen 
+          name="Rules"
+          component={Rules}
+        />
+        <Stack.Screen 
+          name="Settings"
+          component={SettingsScreen}
+        />
+        <Stack.Screen 
+          name="Change Screen"
+          component={ChangeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

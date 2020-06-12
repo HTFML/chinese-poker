@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button'
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
@@ -8,6 +8,12 @@ import { useFonts } from '@use-expo/font'
 
 const HomeScreen = ({ navigation }) => {
   const [userName, setUserName] = useState(null)
+
+  useEffect(() => {
+    let currentUser = firebase.auth().currentUser
+    console.log(currentUser)
+    setUser(currentUser)
+  }, [])
 
   let [fonts] = useFonts({
     'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),

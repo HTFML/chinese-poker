@@ -9,14 +9,18 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import UserCard from '../components/UserCard';
+import firebase from '../utils/firebaseConfig';
+import '@firebase/firestore';
 
 const Lobby = ({ navigation }) => {
   const [isModalVisible, setModal] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [user, setUser] = useState(null)
 
-  const user = {
-    username: 'Aibek',
-    avatar: 'https://i1.pngguru.com/preview/137/834/449/cartoon-cartoon-character-avatar-drawing-film-ecommerce-facial-expression-png-clipart.jpg' 
+  const setCurrentUser = () => {
+    let currentUser = firebase.auth().currentUser
+    firebase.firestore().collection('users').doc(currentUser.uid).get()
+    .then(resp => {setUser(resp.data())})
+    .catch(err => {console.log('Error: ', err)})
   }
 
   const handleNo = () => {
@@ -33,12 +37,13 @@ const Lobby = ({ navigation }) => {
 
   const handleYes = () => {
     setModal(false)
-    navigation.navigate('Play', { userName: userName })
+    navigation.navigate('Play', { userName: user.username })
   }
 
   return (
     <View style={styles.container}>
-      <UserCard username={user.username} avatar={user.avatar}/>
+      {!user && setCurrentUser()}
+      <UserCard username={user && user.username}/>
       <UserCard/>
       <UserCard/>
       <UserCard/>

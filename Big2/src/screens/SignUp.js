@@ -15,6 +15,7 @@ const SignUp = ({ navigation }) => {
   })
 
   const [email, setEmail] = useState('')
+  const [username,setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -45,8 +46,12 @@ const SignUp = ({ navigation }) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(resp => {
         if (resp){
+          let currentUser = firebase.auth().currentUser
+          currentUser.updateProfile({
+            displayName: username
+          })
           firebase.firestore().collection('users').doc(resp.user.uid).set({
-            email: email,
+            email: email
           })
         }
       })
@@ -68,6 +73,7 @@ const SignUp = ({ navigation }) => {
       </View>
       <View style={styles.signup}>
         <TextInput placeholder="Email" value={email} onChangeText={text => setEmail(text)} />
+        <TextInput placeholder="Username" value={username} onChangeText={text => setUsername(text)} />
         <TextInput placeholder="Password" value={password} onChangeText={text => setPassword(text)} textInputProps={{ secureTextEntry: true }} />
         <TextInput placeholder="Confirm Password" value={confirmPassword} onChangeText={text => setConfirmPassword(text)} textInputProps={{ secureTextEntry: true }} />
         <Button title='SIGN UP' onPress={handleSignup} width={width-50} />

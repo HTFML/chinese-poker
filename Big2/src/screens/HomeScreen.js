@@ -9,11 +9,11 @@ import { useFonts } from '@use-expo/font'
 const HomeScreen = ({ navigation }) => {
   const [userName, setUserName] = useState(null)
 
-  useEffect(() => {
-    let currentUser = firebase.auth().currentUser
-    console.log(currentUser)
-    setUser(currentUser)
-  }, [])
+//   useEffect(() => {
+//     let currentUser = firebase.auth().currentUser
+//     console.log(currentUser)
+//     setUser(currentUser)
+//   }, [])
 
   let [fonts] = useFonts({
     'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),

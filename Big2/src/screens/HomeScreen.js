@@ -15,7 +15,6 @@ const HomeScreen = ({ navigation }) => {
 
   useFocusEffect(() => {
     let currentUser = firebase.auth().currentUser
-    console.log(currentUser.displayName);    
     setUserName(currentUser.displayName)
   })
  

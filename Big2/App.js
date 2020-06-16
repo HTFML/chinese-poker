@@ -5,6 +5,7 @@ import { decode, encode } from 'base-64'
 import PostAuthStack from './src/navigation/PostAuthStack'
 import PreAuthStack from './src/navigation/PreAuthStack'
 import LoadingScreen from './src/screens/LoadingScreen'
+import 'firebase/auth'
 
 if (!global.btoa) { global.btoa = encode }
 if (!global.atob) { global.atob = decode }

@@ -7,6 +7,7 @@ import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 
 const Lobby = ({ navigation }) => {
+  
   const [user, setUser] = useState({})
 
   useEffect(() => {
@@ -15,7 +16,6 @@ const Lobby = ({ navigation }) => {
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
-    
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then(resp => {
       if (!resp.exists) console.log('No such User!');

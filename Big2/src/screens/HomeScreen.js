@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../components/Button'
-import { View, Text, StyleSheet, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 import { useFonts } from '@use-expo/font'
 
 const HomeScreen = ({ navigation }) => {
-
-  const [user, setUser] = useState(null)
+  const [userName, setUserName] = useState(null)
 
   let [fonts] = useFonts({
     'Dosis': require('../../assets/fonts/Dosis-Regular.ttf'),
   })
 
-  const setCurrentUser = () => {
+  useFocusEffect(() => {
     let currentUser = firebase.auth().currentUser
-    
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then(resp => {
-      if (!resp.exists) console.log('No such User!');
-      else setUser(resp.data())
-    })
-    .catch(err => {
-      console.log('Error: ', err);
-    });
-  }
 
+//     firebase.firestore().collection('users').doc(currentUser.uid).get()
+//     .then(resp => {
+//       if (!resp.exists) console.log('No such User!');
+//       else setUser(resp.data())
+//     })
+//     .catch(err => {
+//       console.log('Error: ', err);
+//     });
+//   }
+    
+    console.log(currentUser.displayName);    
+    setUserName(currentUser.displayName)
+  })
+ 
   const handleSignOut = () => {
     firebase.auth().signOut()
   }
@@ -33,9 +37,8 @@ const HomeScreen = ({ navigation }) => {
   if (!fonts) return null
   return (
     <View style={styles.mainContainer}>
-      {!user && setCurrentUser()}
       <Text style={styles.header}>
-        Welcome {user && user.email}
+        Welcome {userName}
       </Text>
       <Image 
         source={require('../../assets/cards.jpg')} 
@@ -55,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button 
         title="SETTINGS"
-        onPress={() => Alert.alert("Settings coming soon")}
+        onPress={() => navigation.navigate('Settings')}
         width='45%'
         margin={10}
       />

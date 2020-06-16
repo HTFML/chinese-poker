@@ -16,19 +16,22 @@ const Lobby = ({ navigation }) => {
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then(resp => {
-      if (!resp.exists) console.log('No such User!');
-      else setUser(resp.data())
-    })
-    .catch(err => {
-      console.log('Error: ', err);
-    });
+    setUser(currentUser)
+    // Function below currently not needed but might be neccessary for later
+    // ------------------------------------------------------------------------
+    // firebase.firestore().collection('users').doc(currentUser.uid).get()
+    // .then(resp => {
+    //   if (!resp.exists) console.log('No such User!');
+    //   else setUser(resp.data())
+    // })
+    // .catch(err => {
+    //   console.log('Error: ', err);
+    // });
   }
 
   return (
     <View style={styles.container}>
-      <UserCard username={user.email} />
+      <UserCard username={user.displayName} />
       <UserCard/>
       <UserCard/>
       <UserCard/>

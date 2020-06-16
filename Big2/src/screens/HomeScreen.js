@@ -15,18 +15,6 @@ const HomeScreen = ({ navigation }) => {
 
   useFocusEffect(() => {
     let currentUser = firebase.auth().currentUser
-
-//     firebase.firestore().collection('users').doc(currentUser.uid).get()
-//     .then(resp => {
-//       if (!resp.exists) console.log('No such User!');
-//       else setUser(resp.data())
-//     })
-//     .catch(err => {
-//       console.log('Error: ', err);
-//     });
-//   }
-    
-    console.log(currentUser.displayName);    
     setUserName(currentUser.displayName)
   })
  

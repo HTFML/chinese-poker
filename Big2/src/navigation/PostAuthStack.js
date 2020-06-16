@@ -24,6 +24,7 @@ const PostAuthStack = () => {
         <Stack.Screen 
           name="Play"
           component={PlayScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen 
           name="Lobby"
@@ -44,6 +45,7 @@ const PostAuthStack = () => {
         <Stack.Screen 
           name="Post Game"
           component={PostGameScreen}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

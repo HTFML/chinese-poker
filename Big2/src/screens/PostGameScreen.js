@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Button from '../components/Button'
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
+import { colors } from '../utils/Theme';
 
 const PostGameScreen = ({ navigation }) => {
 
@@ -18,14 +19,16 @@ const PostGameScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textStyle}>Done so soon {userName}?</Text>
+      <Text style={styles.textStyle}>Done so soon, {userName}?</Text>
       <Button
         title="Let's Play Again"
         onPress={()=>{navigation.navigate("Lobby")}}
+        margin={10}
       />
       <Button
         title="Take Me Home"
         onPress={()=>{navigation.navigate("Home")}}
+        margin={10}
       />
     </View>
   )
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     flex: 6,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#DCDCDC",
+    backgroundColor: colors.red,
     padding: 10
   },
   textStyle: {
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.1,
     fontSize: 22,
     fontFamily: 'Chelsea-Market',
-    margin: 25
+    margin: 25,
   }
 });
 

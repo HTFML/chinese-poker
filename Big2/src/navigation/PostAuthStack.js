@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import HomeScreen from '../screens/HomeScreen'
 import PlayScreen from '../screens/PlayScreen'
+import PostGameScreen from '../screens/PostGameScreen'
 import Rules from '../screens/Rules'
 import Lobby from '../screens/Lobby'
 import SettingsScreen from '../screens/SettingsScreen'
@@ -39,6 +40,10 @@ const PostAuthStack = () => {
         <Stack.Screen 
           name="Change Screen"
           component={ChangeScreen}
+        />
+        <Stack.Screen 
+          name="Post Game"
+          component={PostGameScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

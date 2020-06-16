@@ -37,7 +37,9 @@ const Lobby = ({ navigation }) => {
 
   const handleYes = () => {
     setModal(false)
-    navigation.navigate('Play', { userName: user.username })
+    navigation.navigate('Play', 
+      // { userName: user.username }
+    )
   }
 
   return (

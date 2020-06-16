@@ -26,9 +26,8 @@ const Login = ({ navigation }) => {
     });
   }
 
-  if (!fonts) {
-    return null
-  } else {
+  if (!fonts) return null
+  else {
     return (
       <View style={styles.container}>
         <View style={styles.titleContainer}>

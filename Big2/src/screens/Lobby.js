@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import RedButton from '../components/Button'
-import {
-  View,
-  StyleSheet,
-} from "react-native";
+import Button from '../components/Button'
+import { View, StyleSheet } from "react-native";
 import UserCard from '../components/UserCard';
+import { colors } from '../utils/Theme'
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 
@@ -13,18 +11,15 @@ const Lobby = ({ navigation }) => {
 
   useEffect(() => {
     setCurrentUser()
-  })
+  }, [])
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
     
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then(resp => {
-      if (!resp.exists) {
-        console.log('No such User!');
-      } else {
-        setUser(resp.data())
-      }
+      if (!resp.exists) console.log('No such User!');
+      else setUser(resp.data())
     })
     .catch(err => {
       console.log('Error: ', err);
@@ -37,7 +32,7 @@ const Lobby = ({ navigation }) => {
       <UserCard/>
       <UserCard/>
       <UserCard/>
-      <RedButton width='30%' title="Next" onPress={() => navigation.navigate('Play')} />
+      <Button width='30%' title="Next" onPress={() => navigation.navigate('Play')} />
     </View>
   );
 };
@@ -47,18 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#DCDCDC",
-  },
-  modalContainer: {
-    backgroundColor: "white",
-    margin: 60,
-    marginVertical: 360,
-    borderRadius: 20,
-  },
-  modalView: {
-    justifyContent: "center", 
-    alignItems: "center", 
-    margin: 0,
+    backgroundColor: colors.red,
   },
 });
 

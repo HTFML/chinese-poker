@@ -16,7 +16,7 @@ const Lobby = ({ navigation }) => {
   
   console.log('test')
 
-  const testFunction = () => {
+  const notTestFunction = () => {
     console.log('something')
   }
 

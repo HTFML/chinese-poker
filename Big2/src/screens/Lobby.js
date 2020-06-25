@@ -1,65 +1,41 @@
-import React, { useState } from "react";
-import RedButton from '../components/Button'
-import {
-  View,
-  StyleSheet,
-  Text,
-  Alert,
-  Button,
-} from "react-native";
-import Modal from "react-native-modal";
+import React, { useState, useEffect } from "react";
+import Button from '../components/Button'
+import { View, StyleSheet } from "react-native";
 import UserCard from '../components/UserCard';
+import { colors } from '../utils/Theme'
 import firebase from '../utils/firebaseConfig';
 import '@firebase/firestore';
 
 const Lobby = ({ navigation }) => {
-  const [isModalVisible, setModal] = useState(false);
-  const [user, setUser] = useState(null)
+  
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    setCurrentUser()
+  }, [])
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then(resp => {setUser(resp.data())})
-    .catch(err => {console.log('Error: ', err)})
-  }
-
-  const handleNo = () => {
-    Alert.alert("Sorry", "You must be 21 or older to play!", [
-      {
-        text: "Ok",
-        onPress: () => {
-          setModal(false)
-          navigation.navigate("Home")
-        }
-      },
-    ]);
-  };
-
-  const handleYes = () => {
-    setModal(false)
-    navigation.navigate('Play', { userName: user.username })
+    setUser(currentUser)
+    // Function below currently not needed but might be neccessary for later
+    // ------------------------------------------------------------------------
+    // firebase.firestore().collection('users').doc(currentUser.uid).get()
+    // .then(resp => {
+    //   if (!resp.exists) console.log('No such User!');
+    //   else setUser(resp.data())
+    // })
+    // .catch(err => {
+    //   console.log('Error: ', err);
+    // });
   }
 
   return (
     <View style={styles.container}>
-      {!user && setCurrentUser()}
-      <UserCard username={user && user.username}/>
+      <UserCard username={user.displayName} />
       <UserCard/>
       <UserCard/>
       <UserCard/>
-
-      <RedButton width='30%' title="Next" onPress={() => setModal(true)} />
-
-      <Modal isVisible={isModalVisible} style={styles.modalContainer}>
-        <View style={styles.modalView}>
-          <Text>Are you over 21?</Text>
-          <View style={{ flexDirection: "row" }}>
-            <Button title="Yes" onPress={handleYes} />
-            <Button title="No" onPress={handleNo} />
-          </View>
-        </View>
-      </Modal>
-
+      <Button width='30%' title="Next" onPress={() => navigation.navigate('Play')} />
     </View>
   );
 };
@@ -69,20 +45,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#DCDCDC",
-  },
-  modalContainer: {
-    backgroundColor: "white",
-    margin: 60,
-    marginVertical: 360,
-    borderRadius: 20,
-  },
-  modalView: {
-    justifyContent: "center", 
-    alignItems: "center", 
-    margin: 0,
+    backgroundColor: colors.red,
   },
 });
 
 export default Lobby;
-

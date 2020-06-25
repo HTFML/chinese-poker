@@ -16,6 +16,10 @@ const Lobby = ({ navigation }) => {
   
   console.log('test')
 
+  const testFunction = () => {
+    console.log('something')
+  }
+
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser
     setUser(currentUser)

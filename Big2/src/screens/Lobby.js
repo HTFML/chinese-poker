@@ -13,6 +13,8 @@ const Lobby = ({ navigation }) => {
   useEffect(() => {
     setCurrentUser()
   }, [])
+  
+  console.log('test')
 
   const setCurrentUser = () => {
     let currentUser = firebase.auth().currentUser

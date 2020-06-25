@@ -15,7 +15,7 @@ const Lobby = ({ navigation }) => {
   }, [])
 
   const testFunction = () => {
-    console.log('something')
+    console.log('dfff')
   }
 
   const setCurrentUser = () => {

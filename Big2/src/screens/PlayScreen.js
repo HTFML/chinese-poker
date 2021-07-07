@@ -2,10 +2,29 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, Dimensions } from 'react-native';
 import Button from '../components/Button'
 import GreenFelt from '../../assets/greenfelt.jpg'
+import DropSite from "../components/DropSite";
+import Card from "../components/Card";
 
 const height = Dimensions.get('window').height
 
 const PlayScreen = ({ route, navigation }) => {
+
+  const onDragStart = (e, title) => {
+    e.dataTransfer.setData("title", title);
+}
+
+  const onDragOverAllowDrop = (e) => {
+    e.preventDefault();
+}
+  const onDragOverForbideDrop = (e) => {
+    e.stopPropagation()
+}
+
+  const onDrop = (e) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("title")
+    e.target.appendChild(document.getElementById(data))
+}
 
   return (
     <ImageBackground style={styles.background} source={GreenFelt}>
@@ -19,6 +38,21 @@ const PlayScreen = ({ route, navigation }) => {
       </View>
       <View style={styles.mainContainer}>
         <Text>Play!</Text>
+        <DropSite
+          onDrop={onDrop}
+          onDragOverAllowDrop={onDragOverAllowDrop} />
+        <div style={{display: 'flex'}}>
+          <Card
+            title='Card 1'
+            onDragStart={onDragStart} 
+            onDragOverForbideDrop={onDragOverForbideDrop} 
+            />
+          <Card
+            title='Card 2'
+            onDragStart={onDragStart} 
+            onDragOverForbideDrop={onDragOverForbideDrop} 
+            />
+        </div>
       </View>
     </ImageBackground>
   )
